@@ -13,7 +13,8 @@
         <java.version>1.8</java.version>
         <mysql.version>6.0.3</mysql.version>
         <spring.data>1.10.2.RELEASE</spring.data>
-        <hb.manager>5.2.2.Final</hb.manager>
+        <hb.manager>4.2.1.Final</hb.manager>
+        <hb.jpa.api>1.0.1.Final</hb.jpa.api>
     </properties>
 
     <dependencies>
@@ -28,6 +29,12 @@
             <groupId>org.springframework.data</groupId>
             <artifactId>spring-data-jpa</artifactId>
             <version>${spring.data}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.hibernate.javax.persistence</groupId>
+            <artifactId>hibernate-jpa-2.0-api</artifactId>
+            <version>${hb.jpa.api}</version>
         </dependency>
 
         <dependency>
@@ -46,10 +53,6 @@
                     <source>${java.version}</source>
                     <target>${java.version}</target>
                 </configuration>
-            </plugin>
-            <plugin>
-                <groupId>org.springframework.boot</groupId>
-                <artifactId>spring-boot-maven-plugin</artifactId>
             </plugin>
         </plugins>
     </build>
