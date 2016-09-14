@@ -28,14 +28,18 @@ public class Animal implements Serializable {
     private String info;
 
     @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-    @JoinColumn(name = "animal_type_id")
-    private AnimalType animalType;
+    @JoinTable(name = "type_animal",
+            joinColumns = {@JoinColumn(name = "animal_id")},
+            inverseJoinColumns = {@JoinColumn(name = "type_id")})
+    private Type type;
 
     @OneToMany(mappedBy = "animal", fetch = FetchType.LAZY)
     private Collection<Photo> photos;
 
     @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-    @JoinColumn(name = "user_id", nullable = false)
+    @JoinTable(name = "user_animal",
+            joinColumns = {@JoinColumn(name = "animal_id")},
+            inverseJoinColumns = {@JoinColumn(name = "user_id")})
     private User user;
 
     public Animal() {
@@ -73,12 +77,12 @@ public class Animal implements Serializable {
         this.info = info;
     }
 
-    public AnimalType getAnimalType() {
-        return animalType;
+    public Type getType() {
+        return type;
     }
 
-    public void setAnimalType(AnimalType animalType) {
-        this.animalType = animalType;
+    public void setType(Type animalType) {
+        this.type = animalType;
     }
 
     public Collection<Photo> getPhotos() {
@@ -125,7 +129,7 @@ public class Animal implements Serializable {
                 ", name='" + name + '\'' +
                 ", gender=" + gender +
                 ", info='" + info + '\'' +
-                ", animalType=" + animalType +
+                ", animalType=" + type +
                 ", photos=" + photos +
                 ", user=" + user +
                 '}';

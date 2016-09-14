@@ -18,7 +18,9 @@ public class Photo implements Serializable{
     private String photo_link;
 
     @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-    @JoinColumn(name = "animal_id")
+    @JoinTable(name = "animal_photo",
+            joinColumns = {@JoinColumn(name = "photo_id")},
+            inverseJoinColumns = {@JoinColumn(name = "animal_id")})
     private Animal animal;
 
     public Photo() {

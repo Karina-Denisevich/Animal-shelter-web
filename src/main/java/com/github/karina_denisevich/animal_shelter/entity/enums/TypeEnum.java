@@ -1,6 +1,6 @@
 package com.github.karina_denisevich.animal_shelter.entity.enums;
 
-public enum AnimalTypeEnum {
+public enum TypeEnum {
     DOG,
     CAT,
     BIRD,
@@ -8,5 +8,5 @@ public enum AnimalTypeEnum {
     FISH,
     ANY;
 
-    AnimalTypeEnum(){}
+    TypeEnum(){}
 }

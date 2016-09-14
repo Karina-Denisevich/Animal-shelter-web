@@ -11,14 +11,13 @@
 
     <properties>
         <java.version>1.8</java.version>
-        <mysql.version>6.0.3</mysql.version>
+        <mysql.version>5.1.39</mysql.version>
         <spring.data>1.10.2.RELEASE</spring.data>
         <hb.manager>4.2.1.Final</hb.manager>
         <hb.jpa.api>1.0.1.Final</hb.jpa.api>
     </properties>
 
     <dependencies>
-
         <dependency>
             <groupId>mysql</groupId>
             <artifactId>mysql-connector-java</artifactId>
@@ -42,6 +41,20 @@
             <artifactId>hibernate-entitymanager</artifactId>
             <version>${hb.manager}</version>
         </dependency>
+
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <version>4.12</version>
+            <scope>test</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-test</artifactId>
+            <version>3.2.4.RELEASE</version>
+            <scope>test</scope>
+        </dependency>
     </dependencies>
 
     <build>
@@ -56,6 +69,5 @@
             </plugin>
         </plugins>
     </build>
-
 
 </project>

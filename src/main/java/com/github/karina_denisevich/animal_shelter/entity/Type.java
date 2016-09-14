@@ -1,14 +1,14 @@
 package com.github.karina_denisevich.animal_shelter.entity;
 
-import com.github.karina_denisevich.animal_shelter.entity.enums.AnimalTypeEnum;
+import com.github.karina_denisevich.animal_shelter.entity.enums.TypeEnum;
 
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.Collection;
 
 @Entity
-@Table(name = "animal_type")
-public class AnimalType implements Serializable {
+@Table(name = "type")
+public class Type implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
@@ -17,14 +17,14 @@ public class AnimalType implements Serializable {
     @Column(name = "id", unique = true, nullable = false)
     private long id;
 
-    @Column(name = "animal_type")
+    @Column(name = "type")
     @Enumerated(EnumType.STRING)
-    private AnimalTypeEnum animalType;
+    private TypeEnum type;
 
-    @OneToMany(mappedBy = "animalType", fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "type", fetch = FetchType.LAZY)
     private Collection<Animal> animals;
 
-    public AnimalType() {
+    public Type() {
     }
 
     public long getId() {
@@ -35,12 +35,12 @@ public class AnimalType implements Serializable {
         this.id = id;
     }
 
-    public AnimalTypeEnum getAnimalTypeEnum() {
-        return animalType;
+    public TypeEnum getTypeEnum() {
+        return type;
     }
 
-    public void setAnimalTypeEnum(AnimalTypeEnum animalTypeEnum) {
-        this.animalType = animalTypeEnum;
+    public void setTypeEnum(TypeEnum typeEnum) {
+        this.type = typeEnum;
     }
 
     public Collection<Animal> getAnimals() {
@@ -53,9 +53,9 @@ public class AnimalType implements Serializable {
 
     @Override
     public String toString() {
-        return "AnimalType{" +
+        return "Type{" +
                 "id=" + id +
-                ", animalType=" + animalType +
+                ", animalType=" + type +
                 ", animals=" + animals +
                 '}';
     }
