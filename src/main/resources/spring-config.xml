@@ -53,5 +53,4 @@
         <property name="generateDdl" value="true"/>
         <property name="showSql" value="true"/>
     </bean>
-
 </beans>

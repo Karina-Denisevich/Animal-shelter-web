@@ -21,7 +21,7 @@ public class Role implements Serializable {
     @Enumerated(EnumType.STRING)
     private RoleEnum role;
 
-    @ManyToMany(mappedBy = "roles")
+    @ManyToMany(mappedBy = "roles", fetch = FetchType.LAZY)
     private Collection<User> users;
 
     public Role() {
