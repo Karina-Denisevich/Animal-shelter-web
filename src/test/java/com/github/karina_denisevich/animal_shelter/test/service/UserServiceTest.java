@@ -37,7 +37,9 @@ public class UserServiceTest {
     @Test
     public void testSaveBank() throws Exception{
         User user = new User();
+        user.setLogin("Karina");
+        user.setPassword("1111");
         user.setEmail("karina_41997@mail.ru");
-       // userService.saveUser(user);
+        userService.saveUser(user);
     }
 }

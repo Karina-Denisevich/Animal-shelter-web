@@ -45,6 +45,18 @@ public class User implements Serializable {
     public User() {
     }
 
+    public User(String login, String email, String password, String city, String phoneNumber,
+                boolean enabled, Collection<Animal> animals, Collection<Role> roles) {
+        this.login = login;
+        this.email = email;
+        this.password = password;
+        this.city = city;
+        this.phoneNumber = phoneNumber;
+        this.enabled = enabled;
+        this.animals = animals;
+        this.roles = roles;
+    }
+
     public long getId() {
         return id;
     }
