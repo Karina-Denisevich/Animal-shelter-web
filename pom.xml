@@ -79,13 +79,6 @@
             <artifactId>jsf-impl</artifactId>
             <version>${jsf.impl}</version>
         </dependency>
-
-        <dependency>
-            <groupId>org.springframework</groupId>
-            <artifactId>spring-aspects</artifactId>
-            <version>3.0.1.RELEASE</version>
-        </dependency>
-
     </dependencies>
 
     <build>

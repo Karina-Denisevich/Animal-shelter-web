@@ -38,6 +38,6 @@ public class UserServiceTest {
     public void testSaveBank() throws Exception{
         User user = new User();
         user.setEmail("karina_41997@mail.ru");
-       // userService.addUser(user);
+       // userService.saveUser(user);
     }
 }
