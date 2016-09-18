@@ -36,12 +36,8 @@ public class UserServiceTest {
 
     @Test
     public void testSaveBank() throws Exception{
-        Type t = new Type();
-        t.setTypeEnum(TypeEnum.ANY);
         User user = new User();
-        user.setEmail("ddd");
-        userService.addUser(user);
-        em.persist(user);
-       // System.out.print(em.createNamedQuery("getAllUsers"));
+        user.setEmail("karina_41997@mail.ru");
+       // userService.addUser(user);
     }
 }

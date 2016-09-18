@@ -27,7 +27,7 @@ public class Animal implements Serializable {
     @Column(name = "info")
     private String info;
 
-    @ManyToOne(cascade = CascadeType.ALL)
+    @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     @JoinTable(name = "type_animal",
             joinColumns = {@JoinColumn(name = "animal_id")},
             inverseJoinColumns = {@JoinColumn(name = "type_id")})

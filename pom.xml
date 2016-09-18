@@ -15,6 +15,10 @@
         <spring.data>1.10.2.RELEASE</spring.data>
         <hb.manager>4.2.1.Final</hb.manager>
         <hb.jpa.api>1.0.1.Final</hb.jpa.api>
+        <test.junit>4.12</test.junit>
+        <jsf.api>2.2.12</jsf.api>
+        <jsf.impl>2.2.12</jsf.impl>
+        <javax.servlet.api>3.1.0</javax.servlet.api>
     </properties>
 
     <dependencies>
@@ -42,10 +46,11 @@
             <version>${hb.manager}</version>
         </dependency>
 
+        <!--Tests-->
         <dependency>
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>
-            <version>4.12</version>
+            <version>${test.junit}</version>
             <scope>test</scope>
         </dependency>
 
@@ -55,6 +60,32 @@
             <version>3.2.4.RELEASE</version>
             <scope>test</scope>
         </dependency>
+
+        <!--JSF-->
+        <dependency>
+            <groupId>javax.servlet</groupId>
+            <artifactId>javax.servlet-api</artifactId>
+            <version>${javax.servlet.api}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>com.sun.faces</groupId>
+            <artifactId>jsf-api</artifactId>
+            <version>${jsf.api}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>com.sun.faces</groupId>
+            <artifactId>jsf-impl</artifactId>
+            <version>${jsf.impl}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-aspects</artifactId>
+            <version>3.0.1.RELEASE</version>
+        </dependency>
+
     </dependencies>
 
     <build>
