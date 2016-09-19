@@ -54,4 +54,8 @@
         <property name="generateDdl" value="true"/>
         <property name="showSql" value="true"/>
     </bean>
+
+    <bean id="customUserDetailsService"
+          class="com.github.karina_denisevich.animal_shelter.service.impl.CustomUserDetailsService">
+    </bean>
 </beans>

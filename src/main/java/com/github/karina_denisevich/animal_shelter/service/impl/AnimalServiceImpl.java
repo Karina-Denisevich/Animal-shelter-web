@@ -10,6 +10,10 @@ import org.springframework.transaction.annotation.Transactional;
 @Transactional
 public class AnimalServiceImpl implements AnimalService {
 
+    private final AnimalRepository animalRepository;
+
     @Autowired
-    AnimalRepository animalRepository;
+    public AnimalServiceImpl(AnimalRepository animalRepository) {
+        this.animalRepository = animalRepository;
+    }
 }

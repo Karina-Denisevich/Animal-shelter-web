@@ -6,11 +6,17 @@
 		 http://www.springframework.org/schema/security
 		 http://www.springframework.org/schema/security/spring-security.xsd">
 
-    <http/>
 
-    <user-service>
-        <user name="user" password="password" authorities="ROLE_USER"/>
-    </user-service>
+    <http auto-config="true" use-expressions="true">
+        <intercept-url pattern="/*" access="permitAll" />
+        <intercept-url pattern="/**" access="hasRole('ROLE_USER')" />
+        <form-login login-page="/" default-target-url="/index" authentication-failure-url="/?error=true"/>
+        <logout logout-success-url="/" />
+    </http>
+
+    <authentication-manager>
+        <authentication-provider user-service-ref='customUserDetailsService'/>
+    </authentication-manager>
 
 </b:beans>
 

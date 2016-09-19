@@ -9,5 +9,4 @@
             org.springframework.web.jsf.el.SpringBeanFacesELResolver
         </el-resolver>
     </application>
-
 </faces-config>

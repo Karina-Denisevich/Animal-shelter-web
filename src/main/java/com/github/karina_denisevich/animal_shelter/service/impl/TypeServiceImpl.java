@@ -10,6 +10,10 @@ import org.springframework.transaction.annotation.Transactional;
 @Transactional
 public class TypeServiceImpl implements TypeService {
 
+    private final TypeRepository typeRepository;
+
     @Autowired
-    TypeRepository typeRepository;
+    public TypeServiceImpl(TypeRepository typeRepository) {
+        this.typeRepository = typeRepository;
+    }
 }

@@ -10,6 +10,10 @@ import org.springframework.transaction.annotation.Transactional;
 @Transactional
 public class PhotoServiceImpl implements PhotoService {
 
+    private final PhotoRepository photoRepository;
+
     @Autowired
-    PhotoRepository photoRepository;
+    public PhotoServiceImpl(PhotoRepository photoRepository) {
+        this.photoRepository = photoRepository;
+    }
 }
