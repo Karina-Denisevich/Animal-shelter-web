@@ -1,18 +1,14 @@
 package com.github.karina_denisevich.animal_shelter.test.service;
 
 import com.github.karina_denisevich.animal_shelter.entity.Role;
-import com.github.karina_denisevich.animal_shelter.entity.Type;
 import com.github.karina_denisevich.animal_shelter.entity.User;
 import com.github.karina_denisevich.animal_shelter.entity.enums.RoleEnum;
-import com.github.karina_denisevich.animal_shelter.entity.enums.TypeEnum;
 import com.github.karina_denisevich.animal_shelter.service.UserService;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import org.springframework.test.annotation.DirtiesContext;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
-import org.springframework.test.context.web.WebAppConfiguration;
 
 import javax.annotation.Resource;
 import javax.persistence.EntityManager;
@@ -22,7 +18,7 @@ import java.util.Collection;
 
 //@DirtiesContext
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration("file:src/main/resources/spring-config.xml")
+@ContextConfiguration("file:../../../../../../../../main/webapp/WEB-INF/spring-config.xml")
 //@WebAppConfiguration
 public class UserServiceTest {
 

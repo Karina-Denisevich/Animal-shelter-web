@@ -17,7 +17,19 @@
     <ui:insert name="header">
         <ui:include src="../blocks/header.xhtml"/>
     </ui:insert>
-    <h:outputLabel>Login</h:outputLabel>
+
+    <h:form id="loginForm" prependId="false">
+        <h:panelGroup>
+            UN: <h:inputText id="j_username" required="true"/>
+        </h:panelGroup>
+        <h:panelGroup>
+            UN: <h:inputText id="j_password" required="true"/>
+        </h:panelGroup>
+        <br/>
+        <h:panelGroup>
+            <h:commandButton type="submit" id="login" action="#{authenticationBean.doLogin}" value="Login"/>
+        </h:panelGroup>
+    </h:form>
 
 </f:view>
 

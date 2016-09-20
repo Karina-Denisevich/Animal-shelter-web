@@ -11,7 +11,7 @@ import javax.jws.soap.SOAPBinding;
 
 @Service
 @Transactional
-public class UserServiceImpl implements UserService{
+public class UserServiceImpl implements UserService {
 
     private final UserRepository userRepository;
 
@@ -27,7 +27,6 @@ public class UserServiceImpl implements UserService{
 
     @Override
     public User findUserByLogin(String login) {
-        return null;
+        return userRepository.findUserByLogin(login);
     }
-    //TODO: finduser change
 }

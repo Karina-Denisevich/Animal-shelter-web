@@ -17,6 +17,8 @@
         <ui:include src="../blocks/header.xhtml"/>
     </ui:insert>
 
-    <h:outputLabel value="Hello World!"/>
+    <h:form>
+        <h:commandLink action="#{authenticationBean.doLogout}">logout</h:commandLink>
+    </h:form>
 </h:body>
 </html>
