@@ -12,13 +12,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1"/>
 </h:head>
 
-
 <f:view>
     <ui:insert name="header">
         <ui:include src="../blocks/header.xhtml"/>
     </ui:insert>
 
-    <h:form id="loginForm" prependId="false">
+    <h:form id="loginForm" method="post" prependId="false">
         <h:panelGroup>
             UN: <h:inputText id="j_username" required="true"/>
         </h:panelGroup>
@@ -27,7 +26,8 @@
         </h:panelGroup>
         <br/>
         <h:panelGroup>
-            <h:commandButton type="submit" id="login" action="#{authenticationBean.doLogin}" value="Login"/>
+            <h:commandButton type="submit" id="login" action="#{authenticationBean.doLogin}"
+                             value="Login"/>
         </h:panelGroup>
     </h:form>
 

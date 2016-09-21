@@ -18,7 +18,7 @@ import java.util.Collection;
 
 //@DirtiesContext
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration("file:../../../../../../../../main/webapp/WEB-INF/spring-config.xml")
+@ContextConfiguration("file:src/main/webapp/WEB-INF/spring-config.xml")
 //@WebAppConfiguration
 public class UserServiceTest {
 
@@ -37,16 +37,14 @@ public class UserServiceTest {
     @Test
     public void testSaveBank() throws Exception{
         Role role = new Role();
-        Role role1 = new Role();
         role.setRole(RoleEnum.ROLE_ADMIN);
-        role1.setRole(RoleEnum.ROLE_USER);
         User user = new User();
-        user.setLogin("Karina");
+        user.setLogin("karina");
         user.setPassword("1111");
+        user.setEnabled(true);
         user.setEmail("karina_41997@mail.ru");
         Collection<Role> collection = new ArrayList();
         collection.add(role);
-        collection.add(role1);
         user.setRoles(collection);
         userService.saveUser(user);
     }

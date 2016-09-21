@@ -1,27 +1,26 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-       xmlns:context="http://www.springframework.org/schema/context"
        xmlns="http://www.springframework.org/schema/beans"
        xmlns:bean="http://www.springframework.org/schema/security"
        xsi:schemaLocation="http://www.springframework.org/schema/beans
         http://www.springframework.org/schema/beans/spring-beans.xsd
-        http://www.springframework.org/schema/context
-        http://www.springframework.org/schema/context/spring-context.xsd
         http://www.springframework.org/schema/security
         http://www.springframework.org/schema/security/spring-security.xsd">
 
-
     <bean:http auto-config="true" use-expressions="false">
-        <bean:intercept-url pattern="/views/protected/*" access="ROLE_ADMIN"/>
+        <bean:intercept-url pattern="/views/protected/admin.xhtml" access="ROLE_ADMIN"/>
         <bean:form-login login-page="/views/login.xhtml"
+                         username-parameter="j_username"
+                         password-parameter="j_password"
+                         login-processing-url="/j_spring_security_check"
                          default-target-url="/views/index.xhtml"
                          authentication-failure-url="/views/loginfailed.xhtml"/>
-        <bean:logout logout-success-url="/views/login.xhtml?logout"/>
+        <bean:csrf disabled="true"/>
     </bean:http>
 
-    <bean:authentication-manager>
-        <bean:authentication-provider>
-            <bean:jdbc-user-service data-source-ref="dataSource"/>
+    <bean:authentication-manager alias="authenticationManager">
+        <bean:authentication-provider user-service-ref="myUserDetailsService">
+            <bean:password-encoder hash="plaintext"/>
         </bean:authentication-provider>
     </bean:authentication-manager>
 
