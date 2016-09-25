@@ -1,5 +1,7 @@
 package com.github.karina_denisevich.animal_shelter.entity;
 
+import com.sun.istack.internal.NotNull;
+
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.Collection;
@@ -15,12 +17,15 @@ public class User implements Serializable {
     @Column(name = "id", unique = true, nullable = false)
     private long id;
 
+    @NotNull
     @Column(name = "login", unique = true)
     private String login;
 
+    @NotNull
     @Column(name = "email")
     private String email;
 
+    @NotNull
     @Column(name = "password")
     private String password;
 

@@ -16,10 +16,8 @@ import javax.persistence.EntityManagerFactory;
 import java.util.ArrayList;
 import java.util.Collection;
 
-//@DirtiesContext
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration("file:src/main/webapp/WEB-INF/spring-config.xml")
-//@WebAppConfiguration
 public class UserServiceTest {
 
     @Resource
