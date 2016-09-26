@@ -1,6 +1,6 @@
 package com.github.karina_denisevich.animal_shelter.entity;
 
-import com.sun.istack.internal.NotNull;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 import javax.persistence.*;
 import java.io.Serializable;
@@ -17,16 +17,13 @@ public class User implements Serializable {
     @Column(name = "id", unique = true, nullable = false)
     private long id;
 
-    @NotNull
-    @Column(name = "login", unique = true)
+    @Column(name = "login", unique = true, nullable = false)
     private String login;
 
-    @NotNull
-    @Column(name = "email")
+    @Column(name = "email", nullable = false)
     private String email;
 
-    @NotNull
-    @Column(name = "password")
+    @Column(name = "password", nullable = false)
     private String password;
 
     @Column(name = "city", length = 40)
@@ -52,7 +49,7 @@ public class User implements Serializable {
 
     public User(String login, String password, boolean enabled, Collection<Role> roles) {
         this.login = login;
-        this.password = password;
+        this.password = new BCryptPasswordEncoder().encode(password);
         this.enabled = enabled;
         this.roles = roles;
     }
@@ -61,7 +58,7 @@ public class User implements Serializable {
                 boolean enabled, Collection<Animal> animals, Collection<Role> roles) {
         this.login = login;
         this.email = email;
-        this.password = password;
+        this.password = new BCryptPasswordEncoder().encode(password);
         this.city = city;
         this.phoneNumber = phoneNumber;
         this.enabled = enabled;
@@ -98,7 +95,7 @@ public class User implements Serializable {
     }
 
     public void setPassword(String password) {
-        this.password = password;
+        this.password = new BCryptPasswordEncoder().encode(password);
     }
 
     public String getCity() {

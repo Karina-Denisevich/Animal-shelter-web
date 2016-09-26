@@ -27,4 +27,6 @@ public class UserServiceImpl implements UserService {
     public User findUserByLogin(String login) {
         return userRepository.findUserByLogin(login);
     }
+
+
 }

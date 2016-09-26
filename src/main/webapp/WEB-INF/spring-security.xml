@@ -21,9 +21,14 @@
 
     <bean:authentication-manager alias="authenticationManager">
         <bean:authentication-provider user-service-ref="myUserDetailsService">
-            <bean:password-encoder hash="plaintext"/>
+            <bean:password-encoder ref="encoder"/>
         </bean:authentication-provider>
     </bean:authentication-manager>
+
+    <bean id="encoder"
+                class="org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder">
+        <constructor-arg name="strength" value="11" />
+    </bean>
 
     <import resource="spring-config.xml"/>
 </beans>

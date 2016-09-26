@@ -45,6 +45,16 @@ public class Animal implements Serializable {
     public Animal() {
     }
 
+    public Animal(String name, GenderEnum gender, String info,
+                  Type type, Collection<Photo> photos, User user) {
+        this.name = name;
+        this.gender = gender;
+        this.info = info;
+        this.type = type;
+        this.photos = photos;
+        this.user = user;
+    }
+
     public long getId() {
         return id;
     }

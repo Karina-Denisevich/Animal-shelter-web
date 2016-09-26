@@ -1,5 +1,6 @@
 package com.github.karina_denisevich.animal_shelter.service.impl;
 
+import com.github.karina_denisevich.animal_shelter.entity.Animal;
 import com.github.karina_denisevich.animal_shelter.repository.AnimalRepository;
 import com.github.karina_denisevich.animal_shelter.service.AnimalService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,5 +16,10 @@ public class AnimalServiceImpl implements AnimalService {
     @Autowired
     public AnimalServiceImpl(AnimalRepository animalRepository) {
         this.animalRepository = animalRepository;
+    }
+
+    @Override
+    public Animal saveAnimal(Animal animal) {
+        return animalRepository.save(animal);
     }
 }

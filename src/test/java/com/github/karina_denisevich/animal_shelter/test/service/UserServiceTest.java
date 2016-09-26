@@ -3,6 +3,7 @@ package com.github.karina_denisevich.animal_shelter.test.service;
 import com.github.karina_denisevich.animal_shelter.entity.Role;
 import com.github.karina_denisevich.animal_shelter.entity.User;
 import com.github.karina_denisevich.animal_shelter.entity.enums.RoleEnum;
+import com.github.karina_denisevich.animal_shelter.service.AnimalService;
 import com.github.karina_denisevich.animal_shelter.service.UserService;
 import org.junit.Before;
 import org.junit.Test;
@@ -27,6 +28,9 @@ public class UserServiceTest {
     @Resource
     private UserService userService;
 
+    @Resource
+    AnimalService animalService;
+
     @Before
     public void setUp() throws Exception {
         em = emf.createEntityManager();
@@ -39,6 +43,7 @@ public class UserServiceTest {
         User user = new User();
         user.setLogin("karina");
         user.setPassword("1111");
+        user.setCity("Hrodna");
         user.setEnabled(true);
         user.setEmail("karina_41997@mail.ru");
         Collection<Role> collection = new ArrayList();
