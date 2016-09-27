@@ -36,7 +36,7 @@ public class Animal implements Serializable {
     @OneToMany(mappedBy = "animal", fetch = FetchType.LAZY)
     private Collection<Photo> photos;
 
-    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @ManyToOne(fetch = FetchType.LAZY, cascade = {CascadeType.MERGE})
     @JoinTable(name = "user_animal",
             joinColumns = {@JoinColumn(name = "animal_id")},
             inverseJoinColumns = {@JoinColumn(name = "user_id")})

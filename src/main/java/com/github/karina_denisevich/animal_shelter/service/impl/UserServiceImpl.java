@@ -20,13 +20,12 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public User saveUser(User user) {
-        return userRepository.save(user);
+        return userRepository.saveAndFlush(user);
     }
 
+    @Transactional(readOnly = true)
     @Override
     public User findUserByLogin(String login) {
         return userRepository.findUserByLogin(login);
     }
-
-
 }

@@ -5,6 +5,7 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.Collection;
+import java.util.Set;
 
 @Entity
 @Table(name = "user")
@@ -38,33 +39,33 @@ public class User implements Serializable {
     @OneToMany(mappedBy = "user", fetch = FetchType.LAZY)
     private Collection<Animal> animals;
 
-    @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @ManyToOne(cascade = {CascadeType.MERGE}, fetch = FetchType.LAZY)
     @JoinTable(name = "user_role",
             joinColumns = {@JoinColumn(name = "user_id")},
             inverseJoinColumns = {@JoinColumn(name = "role_id")})
-    private Collection<Role> roles;
+    private Role role;
 
     public User() {
     }
 
-    public User(String login, String password, boolean enabled, Collection<Role> roles) {
+    public User(String login, String password, boolean enabled, Role role) {
         this.login = login;
         this.password = new BCryptPasswordEncoder().encode(password);
         this.enabled = enabled;
-        this.roles = roles;
+        this.role = role;
     }
 
-    public User(String login, String email, String password, String city, String phoneNumber,
-                boolean enabled, Collection<Animal> animals, Collection<Role> roles) {
-        this.login = login;
-        this.email = email;
-        this.password = new BCryptPasswordEncoder().encode(password);
-        this.city = city;
-        this.phoneNumber = phoneNumber;
-        this.enabled = enabled;
-        this.animals = animals;
-        this.roles = roles;
-    }
+//    public User(String login, String email, String password, String city, String phoneNumber,
+//                boolean enabled, Collection<Animal> animals, Collection<Role> roles) {
+//        this.login = login;
+//        this.email = email;
+//        this.password = new BCryptPasswordEncoder().encode(password);
+//        this.city = city;
+//        this.phoneNumber = phoneNumber;
+//        this.enabled = enabled;
+//        this.animals = animals;
+//        this.roles = roles;
+//    }
 
     public long getId() {
         return id;
@@ -130,12 +131,12 @@ public class User implements Serializable {
         this.animals = animals;
     }
 
-    public Collection<Role> getRoles() {
-        return roles;
+    public Role getRole() {
+        return role;
     }
 
-    public void setRoles(Collection<Role> roles) {
-        this.roles = roles;
+    public void setRole(Role role) {
+        this.role = role;
     }
 
     @Override
@@ -170,7 +171,7 @@ public class User implements Serializable {
                 ", phoneNumber='" + phoneNumber + '\'' +
                 ", enabled=" + enabled +
                 ", animals=" + animals +
-                ", roles=" + roles +
+                ", role=" + role +
                 '}';
     }
 }

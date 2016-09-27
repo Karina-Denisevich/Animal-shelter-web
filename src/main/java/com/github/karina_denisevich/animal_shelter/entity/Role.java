@@ -5,6 +5,7 @@ import com.github.karina_denisevich.animal_shelter.entity.enums.RoleEnum;
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.Collection;
+import java.util.Set;
 
 @Entity
 @Table(name = "role")
@@ -17,12 +18,12 @@ public class Role implements Serializable {
     @Column(name = "id", unique = true, nullable = false)
     private long id;
 
-    @Column(name = "role")
+    @Column(name = "role", unique = true)
     @Enumerated(EnumType.STRING)
     private RoleEnum role;
 
-    @ManyToMany(mappedBy = "roles", fetch = FetchType.LAZY)
-    private Collection<User> users;
+    @OneToMany(mappedBy = "role", fetch = FetchType.LAZY)
+    private Set<User> users;
 
     public Role() {
     }
@@ -43,11 +44,11 @@ public class Role implements Serializable {
         this.role = role;
     }
 
-    public Collection<User> getUsers() {
+    public Set<User> getUsers() {
         return users;
     }
 
-    public void setUsers(Collection<User> users) {
+    public void setUsers(Set<User> users) {
         this.users = users;
     }
 

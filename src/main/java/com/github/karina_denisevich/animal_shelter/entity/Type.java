@@ -35,11 +35,11 @@ public class Type implements Serializable {
         this.id = id;
     }
 
-    public TypeEnum getTypeEnum() {
+    public TypeEnum getType() {
         return type;
     }
 
-    public void setTypeEnum(TypeEnum typeEnum) {
+    public void setType(TypeEnum typeEnum) {
         this.type = typeEnum;
     }
 
