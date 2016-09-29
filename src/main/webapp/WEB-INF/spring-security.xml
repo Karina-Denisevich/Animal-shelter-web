@@ -29,6 +29,4 @@
                 class="org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder">
         <constructor-arg name="strength" value="11" />
     </bean>
-
-    <import resource="spring-config.xml"/>
 </beans>
