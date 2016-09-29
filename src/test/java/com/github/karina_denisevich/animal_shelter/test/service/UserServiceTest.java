@@ -2,6 +2,7 @@ package com.github.karina_denisevich.animal_shelter.test.service;
 
 import com.github.karina_denisevich.animal_shelter.entity.Animal;
 import com.github.karina_denisevich.animal_shelter.entity.Role;
+import com.github.karina_denisevich.animal_shelter.entity.Type;
 import com.github.karina_denisevich.animal_shelter.entity.User;
 import com.github.karina_denisevich.animal_shelter.entity.enums.GenderEnum;
 import com.github.karina_denisevich.animal_shelter.entity.enums.RoleEnum;
@@ -38,25 +39,57 @@ public class UserServiceTest {
     @Resource
     private RoleService roleService;
 
+    @Resource
+    private AnimalService animalService;
+
+    @Resource
+    private TypeService typeService;
+
+
     @Before
     public void setUp() throws Exception {
         em = emf.createEntityManager();
     }
 
     @Test
-    public void testSave() throws Exception{
-
-        Role role = roleService.findRole(RoleEnum.ROLE_ADMIN);
-
-        User user = new User();
-        user.setEnabled(true);
-        user.setCity("Gomel");
-        user.setPassword("4444");
-        user.setLogin("Hanna");
-        user.setPhoneNumber("+375294444444");
-        user.setEmail("Hanna@gmail.com");
-        user.setRole(role);
-        userService.saveUser(user);
+    public void testSave() throws Exception {
 
     }
 }
+
+
+//    Role role = new Role();
+//    role.setRole(RoleEnum.ROLE_ADMIN);
+//    roleService.saveRole(role);
+//    role=new Role();
+//    role.setRole(RoleEnum.ROLE_ANONYMOUS);
+//    roleService.saveRole(role);
+//    role=new Role();
+//    role.setRole(RoleEnum.ROLE_USER);
+//    roleService.saveRole(role);
+
+//        Role role = roleService.findRole(RoleEnum.ROLE_ADMIN);
+//        User user = new User();
+//        user.setEnabled(true);
+//        user.setCity("Hrodna");
+//        user.setPassword("1111");
+//        user.setLogin("Karina");
+//        user.setPhoneNumber("+375291111111");
+//        user.setEmail("Karina@mail.ru");
+//        user.setRole(role);
+//        userService.saveUser(user);
+
+//        Type type = new Type();
+//        type.setType(TypeEnum.ANY);
+//        typeService.saveType(type);
+
+//        Type type = typeService.findType(TypeEnum.CAT);
+//        User user = userService.findUserByLogin("Mark");
+//
+//        Animal animal = new Animal();
+//        animal.setName("Tom");
+//        animal.setGender(GenderEnum.MALE);
+//        animal.setType(type);
+//        animal.setInfo("Tom is a kind little cat.");
+//        animal.setUser(user);
+//        animalService.saveAnimal(animal);

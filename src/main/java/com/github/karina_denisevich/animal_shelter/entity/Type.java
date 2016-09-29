@@ -21,7 +21,7 @@ public class Type implements Serializable {
     @Enumerated(EnumType.STRING)
     private TypeEnum type;
 
-    @OneToMany(mappedBy = "type", fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "type", cascade = {CascadeType.MERGE, CascadeType.PERSIST})
     private Collection<Animal> animals;
 
     public Type() {

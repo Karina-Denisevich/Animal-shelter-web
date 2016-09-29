@@ -31,4 +31,9 @@ public class RoleServiceImpl implements RoleService {
     public Role findRole(RoleEnum roleEnum) {
         return roleRepository.findRole(roleEnum);
     }
+
+    @Override
+    public void delete(long id) {
+        roleRepository.delete(id);
+    }
 }

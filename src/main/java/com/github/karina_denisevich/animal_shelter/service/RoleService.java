@@ -8,4 +8,6 @@ public interface RoleService {
     Role saveRole(Role role);
 
     Role findRole(RoleEnum roleEnum);
+
+    void delete(long id);
 }

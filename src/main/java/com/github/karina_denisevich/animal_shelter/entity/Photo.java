@@ -5,7 +5,7 @@ import java.io.Serializable;
 
 @Entity
 @Table(name = "photo")
-public class Photo implements Serializable{
+public class Photo implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
@@ -17,10 +17,8 @@ public class Photo implements Serializable{
     @Column(name = "photo_link")
     private String photo_link;
 
-    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-    @JoinTable(name = "animal_photo",
-            joinColumns = {@JoinColumn(name = "photo_id")},
-            inverseJoinColumns = {@JoinColumn(name = "animal_id")})
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "animal_id")
     private Animal animal;
 
     public Photo() {

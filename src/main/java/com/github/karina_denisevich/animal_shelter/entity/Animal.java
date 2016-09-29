@@ -27,19 +27,15 @@ public class Animal implements Serializable {
     @Column(name = "info")
     private String info;
 
-    @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-    @JoinTable(name = "type_animal",
-            joinColumns = {@JoinColumn(name = "animal_id")},
-            inverseJoinColumns = {@JoinColumn(name = "type_id")})
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "type_id")
     private Type type;
 
-    @OneToMany(mappedBy = "animal", fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "animal", cascade = {CascadeType.MERGE, CascadeType.REMOVE, CascadeType.PERSIST})
     private Collection<Photo> photos;
 
-    @ManyToOne(fetch = FetchType.LAZY, cascade = {CascadeType.MERGE})
-    @JoinTable(name = "user_animal",
-            joinColumns = {@JoinColumn(name = "animal_id")},
-            inverseJoinColumns = {@JoinColumn(name = "user_id")})
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "user_id")
     private User user;
 
     public Animal() {

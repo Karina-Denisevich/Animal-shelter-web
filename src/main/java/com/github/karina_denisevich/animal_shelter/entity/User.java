@@ -36,13 +36,11 @@ public class User implements Serializable {
     @Column(name = "enabled")
     private boolean enabled;
 
-    @OneToMany(mappedBy = "user", fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "user", cascade = {CascadeType.MERGE, CascadeType.PERSIST})
     private Collection<Animal> animals;
 
-    @ManyToOne(cascade = {CascadeType.MERGE}, fetch = FetchType.LAZY)
-    @JoinTable(name = "user_role",
-            joinColumns = {@JoinColumn(name = "user_id")},
-            inverseJoinColumns = {@JoinColumn(name = "role_id")})
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "role_id")
     private Role role;
 
     public User() {
@@ -55,17 +53,17 @@ public class User implements Serializable {
         this.role = role;
     }
 
-//    public User(String login, String email, String password, String city, String phoneNumber,
-//                boolean enabled, Collection<Animal> animals, Collection<Role> roles) {
-//        this.login = login;
-//        this.email = email;
-//        this.password = new BCryptPasswordEncoder().encode(password);
-//        this.city = city;
-//        this.phoneNumber = phoneNumber;
-//        this.enabled = enabled;
-//        this.animals = animals;
-//        this.roles = roles;
-//    }
+    public User(String login, String email, String password, String city, String phoneNumber,
+                boolean enabled, Collection<Animal> animals, Role role) {
+        this.login = login;
+        this.email = email;
+        this.password = new BCryptPasswordEncoder().encode(password);
+        this.city = city;
+        this.phoneNumber = phoneNumber;
+        this.enabled = enabled;
+        this.animals = animals;
+        this.role = role;
+    }
 
     public long getId() {
         return id;
@@ -149,7 +147,6 @@ public class User implements Serializable {
         if (id != user.id) return false;
         if (!login.equals(user.login)) return false;
         return email != null ? email.equals(user.email) : user.email == null;
-
     }
 
     @Override
