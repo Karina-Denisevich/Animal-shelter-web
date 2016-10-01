@@ -17,7 +17,12 @@
         <ui:include src="../blocks/header.xhtml"/>
     </ui:insert>
 
+    <f:metadata>
+        <f:viewParam id="name1" name="name1" value="Karina"/>
+    </f:metadata>
+
     <h:form>
+        <h:inputText value="#{userBean.firstUserMail}"/>
         <h:commandLink action="#{authenticationBean.doLogout}">logout</h:commandLink>
     </h:form>
 </h:body>
