@@ -1,4 +1,4 @@
-package com.github.karina_denisevich.animal_shelter.model.entity.enums;
+package com.github.karina_denisevich.animal_shelter.model.enums;
 
 public enum RoleEnum {
     ROLE_ADMIN,

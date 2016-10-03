@@ -1,6 +1,6 @@
 package com.github.karina_denisevich.animal_shelter.model.entity;
 
-import com.github.karina_denisevich.animal_shelter.model.entity.enums.TypeEnum;
+import com.github.karina_denisevich.animal_shelter.model.enums.TypeEnum;
 
 import javax.persistence.*;
 import java.io.Serializable;
