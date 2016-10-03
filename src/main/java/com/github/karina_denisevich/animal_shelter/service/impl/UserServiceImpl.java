@@ -1,6 +1,6 @@
 package com.github.karina_denisevich.animal_shelter.service.impl;
 
-import com.github.karina_denisevich.animal_shelter.entity.User;
+import com.github.karina_denisevich.animal_shelter.model.entity.User;
 import com.github.karina_denisevich.animal_shelter.repository.UserRepository;
 import com.github.karina_denisevich.animal_shelter.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;

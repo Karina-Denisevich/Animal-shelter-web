@@ -49,7 +49,7 @@
     <bean id="entityManagerFactory" class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">
         <property name="persistenceXmlLocation" value="classpath:META-INF/persistence.xml"/>
         <property name="persistenceUnitName" value="hib-jpa-persistence-unit"/>
-        <property name="packagesToScan" value="com.github.karina_denisevich.animal_shelter.entity"/>
+        <property name="packagesToScan" value="com.github.karina_denisevich.animal_shelter.model.entity"/>
         <property name="dataSource" ref="dataSource"/>
         <property name="jpaVendorAdapter" ref="jpaVendorAdapter"/>
         <property name="jpaDialect" ref="jpaDialect"/>

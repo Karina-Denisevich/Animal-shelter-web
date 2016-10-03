@@ -1,9 +1,8 @@
 package com.github.karina_denisevich.animal_shelter.repository;
 
-import com.github.karina_denisevich.animal_shelter.entity.Role;
-import com.github.karina_denisevich.animal_shelter.entity.Type;
-import com.github.karina_denisevich.animal_shelter.entity.enums.RoleEnum;
-import com.github.karina_denisevich.animal_shelter.entity.enums.TypeEnum;
+import com.github.karina_denisevich.animal_shelter.model.entity.Role;
+import com.github.karina_denisevich.animal_shelter.model.entity.Type;
+import com.github.karina_denisevich.animal_shelter.model.entity.enums.TypeEnum;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;

@@ -1,12 +1,9 @@
 package com.github.karina_denisevich.animal_shelter.test.service;
 
-import com.github.karina_denisevich.animal_shelter.entity.Animal;
-import com.github.karina_denisevich.animal_shelter.entity.Role;
-import com.github.karina_denisevich.animal_shelter.entity.Type;
-import com.github.karina_denisevich.animal_shelter.entity.User;
-import com.github.karina_denisevich.animal_shelter.entity.enums.GenderEnum;
-import com.github.karina_denisevich.animal_shelter.entity.enums.RoleEnum;
-import com.github.karina_denisevich.animal_shelter.entity.enums.TypeEnum;
+import com.github.karina_denisevich.animal_shelter.model.entity.Animal;
+import com.github.karina_denisevich.animal_shelter.model.entity.Role;
+import com.github.karina_denisevich.animal_shelter.model.entity.Type;
+import com.github.karina_denisevich.animal_shelter.model.entity.User;
 import com.github.karina_denisevich.animal_shelter.service.AnimalService;
 import com.github.karina_denisevich.animal_shelter.service.RoleService;
 import com.github.karina_denisevich.animal_shelter.service.TypeService;
@@ -20,10 +17,6 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import javax.annotation.Resource;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.HashSet;
-import java.util.Set;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration("file:src/main/webapp/WEB-INF/spring-config.xml")
@@ -53,7 +46,6 @@ public class UserServiceTest {
 
     @Test
     public void testSave() throws Exception {
-
 
     }
 }

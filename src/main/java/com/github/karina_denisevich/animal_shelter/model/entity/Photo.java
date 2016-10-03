@@ -1,4 +1,4 @@
-package com.github.karina_denisevich.animal_shelter.entity;
+package com.github.karina_denisevich.animal_shelter.model.entity;
 
 import javax.persistence.*;
 import java.io.Serializable;

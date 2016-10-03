@@ -1,7 +1,7 @@
 package com.github.karina_denisevich.animal_shelter.service.impl;
 
-import com.github.karina_denisevich.animal_shelter.entity.Type;
-import com.github.karina_denisevich.animal_shelter.entity.enums.TypeEnum;
+import com.github.karina_denisevich.animal_shelter.model.entity.Type;
+import com.github.karina_denisevich.animal_shelter.model.entity.enums.TypeEnum;
 import com.github.karina_denisevich.animal_shelter.repository.TypeRepository;
 import com.github.karina_denisevich.animal_shelter.service.TypeService;
 import org.springframework.beans.factory.annotation.Autowired;

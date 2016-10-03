@@ -1,6 +1,6 @@
-package com.github.karina_denisevich.animal_shelter.entity;
+package com.github.karina_denisevich.animal_shelter.model.entity;
 
-import com.github.karina_denisevich.animal_shelter.entity.enums.GenderEnum;
+import com.github.karina_denisevich.animal_shelter.model.entity.enums.GenderEnum;
 
 import javax.persistence.*;
 import java.io.Serializable;

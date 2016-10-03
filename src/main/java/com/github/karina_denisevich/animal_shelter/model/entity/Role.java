@@ -1,10 +1,9 @@
-package com.github.karina_denisevich.animal_shelter.entity;
+package com.github.karina_denisevich.animal_shelter.model.entity;
 
-import com.github.karina_denisevich.animal_shelter.entity.enums.RoleEnum;
+import com.github.karina_denisevich.animal_shelter.model.entity.enums.RoleEnum;
 
 import javax.persistence.*;
 import java.io.Serializable;
-import java.util.Collection;
 import java.util.Set;
 
 @Entity
