@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core" xmlns:a="http://xmlns.jcp.org/jsf/passthrough">
+
+<h:head>
+    <title>AdminLTE 2 | Registration Page</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta content="text/html; charset=UTF-8" http-equiv="Content-Type"/>
+    <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport"/>
+    <link rel="stylesheet" href="/resources/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.5.0/css/font-awesome.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css"/>
+    <link rel="stylesheet" href="/resources/css/AdminLTE.min.css"/>
+</h:head>
+
+<h:body class="hold-transition register-page">
+    <h:panelGroup layout="block" class="register-box">
+        <h:panelGroup layout="block" class="register-logo">
+            <h:outputLink value="/views/index.xhtml"><strong>Admin</strong>LTE</h:outputLink>
+        </h:panelGroup>
+
+        <h:panelGroup layout="block" class="register-box-body">
+            <p class="login-box-msg">Register a new membership</p>
+
+            <h:form prependId="false" id="reg-form">
+                <!-- register a PostValidateEvent -->
+                <f:event listener="#{registrationBean.validatePassword}" type="postValidate"/>
+                <f:event listener="#{registrationBean.validateLogin}" type="postValidate"/>
+
+                <h:panelGroup layout="block"
+                              class="form-group has-feedback">
+                    <h:inputText id="login"
+                                 type="text"
+                                 class="form-control"
+                                 a:placeholder="*Login"
+                                 value="#{registrationBean.userModelBean.login}"
+                                 required="true"
+                                 requiredMessage="Input login!"/>
+                    <h:message for="login" style="color: red"/>
+                    <span class="glyphicon glyphicon-user form-control-feedback"/>
+                </h:panelGroup>
+
+                <h:panelGroup layout="block" class="form-group has-feedback">
+                    <h:inputText id="email"
+                                 type="email"
+                                 class="form-control"
+                                 a:placeholder="*Email"
+                                 value="#{registrationBean.userModelBean.email}"
+                                 required="true"
+                                 requiredMessage="Input email!"
+                                 validatorMessage="Incorrect email!">
+                        <f:validateRegex
+                                pattern="((.[^@])+)@(mail|gmail|yandex|tut){1}\.(ru|com|by){1}"/>
+                    </h:inputText>
+                    <h:message for="email" style="color: red"/>
+                    <span class="glyphicon glyphicon-envelope form-control-feedback"/>
+                </h:panelGroup>
+
+                <h:panelGroup layout="block" class="form-group has-feedback">
+                    <h:inputText id="phone"
+                                 type="phone"
+                                 class="form-control"
+                                 a:placeholder="Phone(+375XXxxxxxxx)"
+                                 value="#{registrationBean.userModelBean.phoneNumber}"
+                                 validatorMessage="Incorrect phone number! +375XXxxxxxxx">
+                        <f:validateRegex pattern="(\+375(\d){9})"/>
+                    </h:inputText>
+                    <h:message for="phone" style="color: red"/>
+                    <span class="glyphicon glyphicon-envelope form-control-feedback"/>
+                </h:panelGroup>
+
+                <h:panelGroup layout="block" class="form-group has-feedback">
+                    <h:inputText type="city"
+                                 class="form-control"
+                                 a:placeholder="City"
+                                 value="#{registrationBean.userModelBean.city}"/>
+                    <span class="glyphicon glyphicon-envelope form-control-feedback"/>
+                </h:panelGroup>
+
+                <h:panelGroup layout="block" class="form-group has-feedback">
+                    <h:inputSecret id="password"
+                                   type="password"
+                                   class="form-control"
+                                   a:placeholder="*Password"
+                                   value="#{registrationBean.userModelBean.password}"
+                                   required="true"
+                                   requiredMessage="Input password!"/>
+                    <h:message for="password" style="color: red"/>
+                    <span class="glyphicon glyphicon-lock form-control-feedback"/>
+                </h:panelGroup>
+
+                <h:panelGroup layout="block" class="form-group has-feedback">
+                    <h:inputSecret id="confirm-password"
+                                   type="password"
+                                   class="form-control"
+                                   a:placeholder="*Retype password"
+                                   value="#{registrationBean.userModelBean.password}"
+                                   required="true"
+                                   requiredMessage="Input password!"/>
+                    <h:message for="confirm-password" style="color: red"/>
+                    <span class="glyphicon glyphicon-log-in form-control-feedback"/>
+                </h:panelGroup>
+
+                <h:panelGroup layout="block" class="col-xs-4 col-xs-offset-8">
+                    <h:commandLink value="Sign in"
+                                   type="submit"
+                                   action="#{registrationBean.saveUser()}"
+                                   class="btn btn-primary btn-block btn-flat">
+                        <f:ajax execute="reg-form" render="reg-form"/>
+                    </h:commandLink>
+                </h:panelGroup>
+
+            </h:form>
+
+            <h:outputLink value="index.xhtml" immediate="true">Home page</h:outputLink><br/>
+            <h:outputLink value="login.xhtml" class="text-center">I already have a membership</h:outputLink>
+        </h:panelGroup>
+    </h:panelGroup>
+
+    <script type="text/javascript" src="/resources/plugins/jquery-2.2.3.min.js"></script>
+    <script type="text/javascript" src="/resources/js/bootstrap.min.js"></script>
+</h:body>
+</html>

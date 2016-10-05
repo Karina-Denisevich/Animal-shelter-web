@@ -1,4 +1,4 @@
-package com.github.karina_denisevich.animal_shelter.security;
+package com.github.karina_denisevich.animal_shelter.beans.security;
 
 import javax.faces.bean.ManagedBean;
 import javax.faces.context.ExternalContext;
