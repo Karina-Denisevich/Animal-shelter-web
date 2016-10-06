@@ -8,6 +8,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.List;
+
 @Service
 @Transactional
 public class TypeServiceImpl implements TypeService {
@@ -28,5 +30,11 @@ public class TypeServiceImpl implements TypeService {
     @Override
     public Type findType(TypeEnum type) {
         return typeRepository.findType(type);
+    }
+
+    @Transactional(readOnly = true)
+    @Override
+    public List<Type> getAll() {
+        return typeRepository.findAll();
     }
 }

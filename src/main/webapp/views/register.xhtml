@@ -27,7 +27,7 @@
             <p class="login-box-msg">Register a new membership</p>
 
             <h:form prependId="false" id="reg-form">
-                <!-- register a PostValidateEvent -->
+
                 <f:event listener="#{registrationBean.validatePassword}" type="postValidate"/>
                 <f:event listener="#{registrationBean.validateLogin}" type="postValidate"/>
 

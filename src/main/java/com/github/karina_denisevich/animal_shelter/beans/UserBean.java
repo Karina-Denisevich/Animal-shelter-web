@@ -3,6 +3,8 @@ package com.github.karina_denisevich.animal_shelter.beans;
 import com.github.karina_denisevich.animal_shelter.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.User;
 import org.springframework.stereotype.Component;
 
 import java.io.Serializable;
@@ -20,5 +22,12 @@ public class UserBean implements Serializable {
 
     public String getFirstUserMail() {
         return userService.findUserByLogin("Karina").getEmail();
+    }
+
+    public String getCurrentUser(){
+        User user = (User)SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        String name = user.getUsername(); //get logged in username
+
+        return name;
     }
 }

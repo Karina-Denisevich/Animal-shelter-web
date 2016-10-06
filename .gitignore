@@ -49,7 +49,6 @@ crashlytics-build.properties
 fabric.properties
 
 
-
 #Maven
 
 lib/
@@ -62,3 +61,7 @@ release.properties
 dependency-reduced-pom.xml
 buildNumber.properties
 .mvn/timing.properties
+
+#User files
+
+photos/

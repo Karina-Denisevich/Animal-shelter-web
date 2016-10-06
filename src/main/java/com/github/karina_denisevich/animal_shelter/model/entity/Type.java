@@ -52,6 +52,25 @@ public class Type implements Serializable {
     }
 
     @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        Type type1 = (Type) o;
+
+        if (id != type1.id) return false;
+        return type == type1.type;
+
+    }
+
+    @Override
+    public int hashCode() {
+        int result = (int) (id ^ (id >>> 32));
+        result = 31 * result + type.hashCode();
+        return result;
+    }
+
+    @Override
     public String toString() {
         return "Type{" +
                 "id=" + id +
