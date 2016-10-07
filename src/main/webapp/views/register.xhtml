@@ -4,7 +4,8 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://java.sun.com/jsf/html"
       xmlns:ui="http://java.sun.com/jsf/facelets"
-      xmlns:f="http://java.sun.com/jsf/core" xmlns:a="http://xmlns.jcp.org/jsf/passthrough">
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:a="http://xmlns.jcp.org/jsf/passthrough">
 
 <h:head>
     <title>AdminLTE 2 | Registration Page</title>
@@ -28,8 +29,8 @@
 
             <h:form prependId="false" id="reg-form">
 
-                <f:event listener="#{registrationBean.validatePassword}" type="postValidate"/>
-                <f:event listener="#{registrationBean.validateLogin}" type="postValidate"/>
+                <f:event listener="#{passwordValidator.validatePassword}" type="postValidate"/>
+                <f:event listener="#{loginValidator.validateLogin}" type="postValidate"/>
 
                 <h:panelGroup layout="block"
                               class="form-group has-feedback">
@@ -37,7 +38,7 @@
                                  type="text"
                                  class="form-control"
                                  a:placeholder="*Login"
-                                 value="#{registrationBean.userModelBean.login}"
+                                 value="#{userModelBean.login}"
                                  required="true"
                                  requiredMessage="Input login!"/>
                     <h:message for="login" style="color: red"/>
@@ -49,7 +50,7 @@
                                  type="email"
                                  class="form-control"
                                  a:placeholder="*Email"
-                                 value="#{registrationBean.userModelBean.email}"
+                                 value="#{userModelBean.email}"
                                  required="true"
                                  requiredMessage="Input email!"
                                  validatorMessage="Incorrect email!">
@@ -65,7 +66,7 @@
                                  type="phone"
                                  class="form-control"
                                  a:placeholder="Phone(+375XXxxxxxxx)"
-                                 value="#{registrationBean.userModelBean.phoneNumber}"
+                                 value="#{userModelBean.phoneNumber}"
                                  validatorMessage="Incorrect phone number! +375XXxxxxxxx">
                         <f:validateRegex pattern="(\+375(\d){9})"/>
                     </h:inputText>
@@ -77,7 +78,7 @@
                     <h:inputText type="city"
                                  class="form-control"
                                  a:placeholder="City"
-                                 value="#{registrationBean.userModelBean.city}"/>
+                                 value="#{userModelBean.city}"/>
                     <span class="glyphicon glyphicon-envelope form-control-feedback"/>
                 </h:panelGroup>
 
@@ -86,7 +87,7 @@
                                    type="password"
                                    class="form-control"
                                    a:placeholder="*Password"
-                                   value="#{registrationBean.userModelBean.password}"
+                                   value="#{userModelBean.password}"
                                    required="true"
                                    requiredMessage="Input password!"/>
                     <h:message for="password" style="color: red"/>
@@ -98,7 +99,7 @@
                                    type="password"
                                    class="form-control"
                                    a:placeholder="*Retype password"
-                                   value="#{registrationBean.userModelBean.password}"
+                                   value="#{userModelBean.password}"
                                    required="true"
                                    requiredMessage="Input password!"/>
                     <h:message for="confirm-password" style="color: red"/>

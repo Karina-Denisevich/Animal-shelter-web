@@ -59,19 +59,20 @@ public class AnimalRegistrationBean implements Serializable {
         this.userBean = userBean;
     }
 
-    public void saveAnimal(){
+    public void saveAnimal() {
 
-       // User user = userService.findUserByLogin(userBean.getCurrentUser());
+        User user = userService.findUserByLogin(userBean.getCurrentUser());
         Type type = typeService.findType(animalModelBean.getType().getType());
-       // GenderEnum genderEnum = GenderEnum.valueOf(animalModelBean.getGender());
+
+        System.out.println(user.getAnimals().size());
 
         Animal animal = new Animal();
-//        animal.setName(animalModelBean.getName());
-//        animal.setInfo(animalModelBean.getInfo());
+        animal.setName(animalModelBean.getName());
+        animal.setInfo(animalModelBean.getInfo());
+        animal.setGender(animalModelBean.getGender());
         animal.setType(type);
-//        animal.setGender(genderEnum);
-//        animal.setUser(user);
+        animal.setUser(user);
 
-       // animalService.saveAnimal(animal);
+      //  animalService.saveAnimal(animal);
     }
 }

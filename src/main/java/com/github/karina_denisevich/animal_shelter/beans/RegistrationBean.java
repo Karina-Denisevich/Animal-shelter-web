@@ -49,7 +49,7 @@ public class RegistrationBean implements Serializable {
         user.setRole(role);
         user.setEnabled(enabled);
 
-        userService.saveUser(user);
+      //  userService.saveUser(user);
     }
 
     public UserService getUserService() {
@@ -66,55 +66,5 @@ public class RegistrationBean implements Serializable {
 
     public void setUserModelBean(UserModelBean userModelBean) {
         this.userModelBean = userModelBean;
-    }
-
-    public void validateLogin(ComponentSystemEvent event){
-        UIComponent components = event.getComponent();
-
-        // get password
-        UIInput uiInputLogin = (UIInput) components.findComponent("login");
-        String login = uiInputLogin.getLocalValue() == null ? ""
-                : uiInputLogin.getLocalValue().toString();
-        String loginId = uiInputLogin.getClientId();
-
-        if (login.isEmpty()) {
-            return;
-        }
-
-        if(userService.findUserByLogin(login) != null){
-            FacesContext fc = FacesContext.getCurrentInstance();
-            FacesMessage msg = new FacesMessage("There is already the person with the same name!");
-            msg.setSeverity(FacesMessage.SEVERITY_ERROR);
-            fc.addMessage(loginId, msg);
-            fc.renderResponse();
-        }
-    }
-
-    public void validatePassword(ComponentSystemEvent event){
-        UIComponent components = event.getComponent();
-
-        // get password
-        UIInput uiInputPassword = (UIInput) components.findComponent("password");
-        String password = uiInputPassword.getLocalValue() == null ? ""
-                : uiInputPassword.getLocalValue().toString();
-        String passwordId = uiInputPassword.getClientId();
-
-        // get confirm password
-        UIInput uiInputConfirmPassword = (UIInput) components.findComponent("confirm-password");
-        String confirmPassword = uiInputConfirmPassword.getLocalValue() == null ? ""
-                : uiInputConfirmPassword.getLocalValue().toString();
-
-        // Let required="true" do its job.
-        if (password.isEmpty() || confirmPassword.isEmpty()) {
-            return;
-        }
-        FacesContext fc = FacesContext.getCurrentInstance();
-
-        if (!password.equals(confirmPassword)) {
-            FacesMessage msg = new FacesMessage("Password must match confirm password");
-            msg.setSeverity(FacesMessage.SEVERITY_ERROR);
-            fc.addMessage(passwordId, msg);
-            fc.renderResponse();
-        }
     }
 }

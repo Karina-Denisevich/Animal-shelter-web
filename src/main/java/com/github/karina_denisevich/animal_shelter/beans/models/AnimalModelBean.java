@@ -1,6 +1,7 @@
 package com.github.karina_denisevich.animal_shelter.beans.models;
 
 import com.github.karina_denisevich.animal_shelter.model.entity.Type;
+import com.github.karina_denisevich.animal_shelter.model.enums.GenderEnum;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
 
@@ -15,7 +16,7 @@ public class AnimalModelBean implements Serializable {
 
     private String name;
 
-    private String gender;
+    private GenderEnum gender;
 
     private String info;
 
@@ -24,10 +25,17 @@ public class AnimalModelBean implements Serializable {
     public AnimalModelBean() {
     }
 
+    public AnimalModelBean(String name, GenderEnum gender, String info, Type type) {
+        this.name = name;
+        this.gender = gender;
+        this.info = info;
+        this.type = type;
+    }
+
     @PostConstruct
     public void init() {
         name = "";
-        gender = "";
+        gender = null;
         info = "";
         type = null;
     }
@@ -40,11 +48,11 @@ public class AnimalModelBean implements Serializable {
         this.name = name;
     }
 
-    public String getGender() {
+    public GenderEnum getGender() {
         return gender;
     }
 
-    public void setGender(String gender) {
+    public void setGender(GenderEnum gender) {
         this.gender = gender;
     }
 
