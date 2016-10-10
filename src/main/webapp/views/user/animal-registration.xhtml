@@ -6,62 +6,93 @@
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
       xmlns:f="http://xmlns.jcp.org/jsf/core"
       xmlns:a="http://xmlns.jcp.org/jsf/passthrough">
+<!--xmlns:h="http://java.sun.com/jsf/html"-->
 
 <h:head>
     <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
     <meta content="text/html; charset=UTF-8" http-equiv="Content-Type"/>
+    <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport"/>
+    <link rel="stylesheet" href="/resources/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.5.0/css/font-awesome.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css"/>
+    <link rel="stylesheet" href="/resources/css/AdminLTE.min.css"/>
 </h:head>
 
-<h:body>
-    <f:view>
-        <h:form prependId="false" id="animal-form">
+<h:body class="hold-transition register-page">
+    <h:panelGroup layout="block" class="register-box">
+        <h:panelGroup layout="block" class="register-logo">
+            <h:outputLink value="/views/index.xhtml"><strong>Admin</strong>LTE</h:outputLink>
+        </h:panelGroup>
 
-            <h:panelGroup id="group"
-                    layout="block"
-                          class="form-group has-feedback">
-                <h:inputText id="name"
-                             type="text"
-                             class="form-control"
-                             a:placeholder="*Name"
-                             value="#{animalModelBean.name}"
-                             required="true"
-                             requiredMessage="Input name!"/>
-                <h:message for="name" style="color: red"/>
-                <span class="glyphicon glyphicon-user form-control-feedback"/>
-            </h:panelGroup>
+        <h:panelGroup layout="block" class="register-box-body">
+            <p class="login-box-msg">Add a new animal</p>
+            <h:form prependId="false" id="animal-form">
+                <h:panelGroup id="group"
+                              layout="block"
+                              class="form-group has-feedback">
+                    <h:inputText id="name"
+                                 type="text"
+                                 class="form-control"
+                                 a:placeholder="*Name"
+                                 value="#{animalModelBean.name}"
+                                 required="true"
+                                 requiredMessage="Input name!"/>
+                    <h:message for="name" style="color: red"/>
+                    <span class="glyphicon glyphicon-user form-control-feedback"/>
+                </h:panelGroup>
 
-            <h:panelGroup layout="block" class="form-group has-feedback">
-                <h:outputText value="Type"/>
-                <h:selectOneMenu value="#{animalModelBean.type}" converter="#{animalTypeConverter}">
-                    <f:selectItems value="#{typeBean.typesMap}"/>
-                </h:selectOneMenu>
-            </h:panelGroup>
+                <h:panelGroup layout="block" class="form-group has-feedback">
+                    <h:outputText value="Type"/>
+                    <h:selectOneMenu value="#{animalModelBean.type}" converter="#{animalTypeConverter}">
+                        <f:selectItems value="#{typeBean.typesMap}"/>
+                    </h:selectOneMenu>
+                </h:panelGroup>
 
-            <h:panelGroup layout="block" class="form-group has-feedback">
-                <h:outputText value="Gender"/>
-                <h:selectOneMenu value="#{animalModelBean.gender}" converter="#{genderConverter}">
-                    <f:selectItems value="#{genderBean.genderMap}"/>
-                </h:selectOneMenu>
-            </h:panelGroup>
+                <h:panelGroup layout="block" class="form-group has-feedback">
+                    <h:outputText value="Gender"/>
+                    <h:selectOneMenu value="#{animalModelBean.gender}" converter="#{genderConverter}">
+                        <f:selectItems value="#{genderBean.genderMap}"/>
+                    </h:selectOneMenu>
+                </h:panelGroup>
 
-            <h:panelGroup layout="block"
-                          class="form-group has-feedback">
-                <h:inputText id="info"
-                             type="text"
-                             class="form-control"
-                             a:placeholder="Info"
-                             value="#{animalModelBean.info}"/>
-                <span class="glyphicon glyphicon-user form-control-feedback"/>
-            </h:panelGroup>
+                <h:panelGroup layout="block"
+                              class="form-group has-feedback">
+                    <h:inputText id="info"
+                                 type="text"
+                                 class="form-control"
+                                 a:placeholder="Info"
+                                 value="#{animalModelBean.info}"/>
+                    <span class="glyphicon glyphicon-user form-control-feedback"/>
+                </h:panelGroup>
 
-            <h:panelGroup layout="block" class="col-xs-4 col-xs-offset-8">
-                <h:commandLink type="submit"
-                               value="Button1"
-                               action="#{animalRegistrationBean.saveAnimal()}">
-                    <f:ajax execute="animal-form" render="group"/>
-                </h:commandLink>
-            </h:panelGroup>
-        </h:form>
-    </f:view>
+                <h:panelGroup layout="block" class="col-xs-4 col-xs-offset-8">
+                    <h:commandLink type="submit"
+                                   value="Button1"
+                                   action="#{animalRegistrationBean.saveAnimal()}">
+                        <f:ajax execute="animal-form" render="group"/>
+                    </h:commandLink>
+                </h:panelGroup>
+            </h:form>
+
+
+            <h:form id="form" enctype="multipart/form-data">
+                <h:panelGroup id="me1" layout="block" class="form-group">
+                    <h:outputLabel>Choose photo</h:outputLabel>
+                    <h:inputFile id="file" value="#{photoBean.file}"/>
+                    <h:commandLink value="Upload" action="#{photoBean.upload}">
+                        <f:ajax execute="file" render="@form"/>
+                    </h:commandLink>
+                    <!--<p class="help-block">Example block-level help text here.</p>-->
+                    <h:inputTextarea value="#{photoBean.file}" readonly="true"/>
+                </h:panelGroup>
+            </h:form>
+
+
+            <h:outputLink value="index.xhtml" immediate="true">Home page</h:outputLink><br/>
+        </h:panelGroup>
+    </h:panelGroup>
+
+    <script type="text/javascript" src="/resources/plugins/jquery-2.2.3.min.js"></script>
+    <script type="text/javascript" src="/resources/js/bootstrap.min.js"></script>
 </h:body>
 </html>

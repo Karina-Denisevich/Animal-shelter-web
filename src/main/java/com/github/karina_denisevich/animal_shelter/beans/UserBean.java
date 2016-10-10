@@ -24,7 +24,7 @@ public class UserBean implements Serializable {
         return userService.findUserByLogin("Karina").getEmail();
     }
 
-    public String getCurrentUser(){
+    public String getCurrentUserName(){
         User user = (User)SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         String name = user.getUsername(); //get logged in username
 

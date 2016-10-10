@@ -61,10 +61,8 @@ public class AnimalRegistrationBean implements Serializable {
 
     public void saveAnimal() {
 
-        User user = userService.findUserByLogin(userBean.getCurrentUser());
+        User user = userService.findUserByLogin(userBean.getCurrentUserName());
         Type type = typeService.findType(animalModelBean.getType().getType());
-
-        System.out.println(user.getAnimals().size());
 
         Animal animal = new Animal();
         animal.setName(animalModelBean.getName());
@@ -72,6 +70,8 @@ public class AnimalRegistrationBean implements Serializable {
         animal.setGender(animalModelBean.getGender());
         animal.setType(type);
         animal.setUser(user);
+
+        System.out.println("++++++++++++++" + animal.getUser().getLogin());
 
       //  animalService.saveAnimal(animal);
     }

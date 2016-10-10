@@ -35,7 +35,7 @@ public class RegistrationBean implements Serializable {
     public RegistrationBean() {
     }
 
-    public void saveUser(){
+    public void saveUser() {
         Role role = roleService.findRole(RoleEnum.ROLE_USER);
 
         boolean enabled = true;
@@ -49,7 +49,9 @@ public class RegistrationBean implements Serializable {
         user.setRole(role);
         user.setEnabled(enabled);
 
-      //  userService.saveUser(user);
+        System.out.println("+******************++" + user.getLogin());
+
+        //  userService.saveUser(user);
     }
 
     public UserService getUserService() {
