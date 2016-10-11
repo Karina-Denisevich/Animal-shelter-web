@@ -4,9 +4,9 @@ import com.github.karina_denisevich.animal_shelter.model.entity.User;
 
 public interface UserService {
 
-    User saveUser(User user);
+    void saveUser(final User user);
 
-    User findUserByLogin(String login);
+    User findUserByLogin(final String login);
 
     void delete(long id);
 }

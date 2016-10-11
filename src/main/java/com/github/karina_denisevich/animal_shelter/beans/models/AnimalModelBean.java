@@ -3,6 +3,7 @@ package com.github.karina_denisevich.animal_shelter.beans.models;
 import com.github.karina_denisevich.animal_shelter.model.entity.Type;
 import com.github.karina_denisevich.animal_shelter.model.enums.GenderEnum;
 import org.springframework.context.annotation.Scope;
+import org.springframework.data.repository.query.parser.Part;
 import org.springframework.stereotype.Component;
 
 import javax.annotation.PostConstruct;

@@ -49,9 +49,7 @@ public class RegistrationBean implements Serializable {
         user.setRole(role);
         user.setEnabled(enabled);
 
-        System.out.println("+******************++" + user.getLogin());
-
-        //  userService.saveUser(user);
+          userService.saveUser(user);
     }
 
     public UserService getUserService() {

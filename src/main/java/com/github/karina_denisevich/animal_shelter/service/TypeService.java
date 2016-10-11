@@ -7,9 +7,9 @@ import java.util.List;
 
 public interface TypeService {
 
-    Type saveType(Type type);
+    void saveType(final Type type);
 
-    Type findType(TypeEnum type);
+    Type findType(final TypeEnum type);
 
     List<Type> getAll();
 }

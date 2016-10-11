@@ -2,11 +2,11 @@ package com.github.karina_denisevich.animal_shelter.beans;
 
 import com.github.karina_denisevich.animal_shelter.beans.models.AnimalModelBean;
 import com.github.karina_denisevich.animal_shelter.model.entity.Animal;
+import com.github.karina_denisevich.animal_shelter.model.entity.Photo;
 import com.github.karina_denisevich.animal_shelter.model.entity.Type;
 import com.github.karina_denisevich.animal_shelter.model.entity.User;
-import com.github.karina_denisevich.animal_shelter.model.enums.GenderEnum;
-import com.github.karina_denisevich.animal_shelter.model.enums.TypeEnum;
 import com.github.karina_denisevich.animal_shelter.service.AnimalService;
+import com.github.karina_denisevich.animal_shelter.service.PhotoService;
 import com.github.karina_denisevich.animal_shelter.service.TypeService;
 import com.github.karina_denisevich.animal_shelter.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,6 +14,10 @@ import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collection;
+import java.util.Collections;
 
 @Component
 @Scope("request")
@@ -31,10 +35,16 @@ public class AnimalRegistrationBean implements Serializable {
     public TypeService typeService;
 
     @Autowired
+    public PhotoService photoService;
+
+    @Autowired
     AnimalModelBean animalModelBean;
 
     @Autowired
     UserBean userBean;
+
+    @Autowired
+    PhotoBean photoBean;
 
     public AnimalRegistrationBean() {
     }
@@ -70,9 +80,14 @@ public class AnimalRegistrationBean implements Serializable {
         animal.setGender(animalModelBean.getGender());
         animal.setType(type);
         animal.setUser(user);
+        animalService.saveAnimal(animal);
 
-        System.out.println("++++++++++++++" + animal.getUser().getLogin());
-
-      //  animalService.saveAnimal(animal);
+        photoBean.upload();
+        if (!photoBean.getFileName().isEmpty()) {
+            Photo photo = new Photo();
+            photo.setAnimal(animal);
+            photo.setPhotoLink(photoBean.getFileName());
+            photoService.savePhoto(photo);
+        }
     }
 }

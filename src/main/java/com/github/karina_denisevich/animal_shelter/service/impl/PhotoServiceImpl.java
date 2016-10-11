@@ -1,5 +1,6 @@
 package com.github.karina_denisevich.animal_shelter.service.impl;
 
+import com.github.karina_denisevich.animal_shelter.model.entity.Photo;
 import com.github.karina_denisevich.animal_shelter.repository.PhotoRepository;
 import com.github.karina_denisevich.animal_shelter.service.PhotoService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,5 +16,10 @@ public class PhotoServiceImpl implements PhotoService {
     @Autowired
     public PhotoServiceImpl(PhotoRepository photoRepository) {
         this.photoRepository = photoRepository;
+    }
+
+    @Override
+    public Photo savePhoto(Photo photo) {
+        return photoRepository.saveAndFlush(photo);
     }
 }

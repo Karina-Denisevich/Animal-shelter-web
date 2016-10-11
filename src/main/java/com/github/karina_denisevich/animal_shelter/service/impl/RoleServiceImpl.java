@@ -22,13 +22,12 @@ public class RoleServiceImpl implements RoleService {
     }
 
     @Override
-    public Role saveRole(Role role) {
-        return roleRepository.saveAndFlush(role);
+    public void saveRole(final Role role) {roleRepository.saveAndFlush(role);
     }
 
     @Transactional(readOnly = true)
     @Override
-    public Role findRole(RoleEnum roleEnum) {
+    public Role findRole(final RoleEnum roleEnum) {
         return roleRepository.findRole(roleEnum);
     }
 

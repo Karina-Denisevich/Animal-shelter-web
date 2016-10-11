@@ -19,7 +19,6 @@ public class AnimalServiceImpl implements AnimalService {
     }
 
     @Override
-    public Animal saveAnimal(Animal animal) {
-        return animalRepository.save(animal);
+    public Animal saveAnimal(final Animal animal) {return animalRepository.save(animal);
     }
 }

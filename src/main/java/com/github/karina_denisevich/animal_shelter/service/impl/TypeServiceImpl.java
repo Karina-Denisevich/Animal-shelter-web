@@ -22,13 +22,13 @@ public class TypeServiceImpl implements TypeService {
     }
 
     @Override
-    public Type saveType(Type type) {
-        return typeRepository.save(type);
+    public void saveType(final Type type) {
+        typeRepository.save(type);
     }
 
     @Transactional(readOnly = true)
     @Override
-    public Type findType(TypeEnum type) {
+    public Type findType(final TypeEnum type) {
         return typeRepository.findType(type);
     }
 

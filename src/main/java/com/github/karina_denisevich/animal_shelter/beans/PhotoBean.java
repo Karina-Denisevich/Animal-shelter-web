@@ -1,5 +1,6 @@
 package com.github.karina_denisevich.animal_shelter.beans;
 
+import com.github.karina_denisevich.animal_shelter.model.entity.Photo;
 import com.github.karina_denisevich.animal_shelter.model.entity.User;
 import com.github.karina_denisevich.animal_shelter.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -7,7 +8,6 @@ import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
 
 import javax.annotation.PostConstruct;
-import javax.faces.bean.ManagedBean;
 import javax.servlet.http.Part;
 import java.io.File;
 import java.io.IOException;
@@ -25,8 +25,9 @@ public class PhotoBean implements Serializable {
     private static final long serialVersionUID = 1L;
 
     private Part file;
-    private String fileContent = "";
+    private String fileContent;
     private User user;
+    private String fileName;
 
     @Autowired
     UserService userService;
@@ -36,21 +37,25 @@ public class PhotoBean implements Serializable {
 
     @PostConstruct
     public void init() {
+        file = null;
         user = userService.findUserByLogin(userBean.getCurrentUserName());
     }
 
     public void upload() {
-        String s = user.getLogin();
-        try {
-            fileContent = new Scanner(file.getInputStream()).useDelimiter("\\A").next();
-            InputStream input = file.getInputStream();
+        if (file != null) {
+            String prefix = getFolderName();
+            try {
+                fileContent = new Scanner(file.getInputStream()).useDelimiter("\\A").next();
+                InputStream input = file.getInputStream();
 
-            File f = File.createTempFile(s, ".jpg", getTargetDirectory());
+                File f = File.createTempFile(prefix, ".jpg", getTargetDirectory());
+                Files.copy(input, f.toPath(), StandardCopyOption.REPLACE_EXISTING);
 
-            Files.copy(input, f.toPath(), StandardCopyOption.REPLACE_EXISTING);
+                fileName = f.getName();
 
-        } catch (IOException e) {
-            e.printStackTrace();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
         }
     }
 
@@ -68,7 +73,15 @@ public class PhotoBean implements Serializable {
     }
 
     private String getFolderName() {
-        return String.valueOf(user.getId());
+        return user.getLogin().substring(0, 3);
+    }
+
+    public String getFileName() {
+        return fileName;
+    }
+
+    public void setFileName(String fileName) {
+        this.fileName = fileName;
     }
 
     public Part getFile() {

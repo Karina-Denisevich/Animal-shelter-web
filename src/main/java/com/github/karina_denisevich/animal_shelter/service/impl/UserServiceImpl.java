@@ -19,13 +19,13 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public User saveUser(User user) {
-        return userRepository.saveAndFlush(user);
+    public void saveUser(final User user) {
+        userRepository.saveAndFlush(user);
     }
 
     @Transactional(readOnly = true)
     @Override
-    public User findUserByLogin(String login) {
+    public User findUserByLogin(final String login) {
         return userRepository.findUserByLogin(login);
     }
 

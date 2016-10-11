@@ -24,11 +24,11 @@
             <h:outputLink value="/views/index.xhtml"><strong>Admin</strong>LTE</h:outputLink>
         </h:panelGroup>
 
-        <h:panelGroup layout="block" class="register-box-body">
+        <h:panelGroup id="group" layout="block" class="register-box-body">
             <p class="login-box-msg">Add a new animal</p>
-            <h:form prependId="false" id="animal-form">
-                <h:panelGroup id="group"
-                              layout="block"
+            <h:form prependId="false" id="animal-form" enctype="multipart/form-data">
+                <!--enctype="multipart/form-data"-->
+                <h:panelGroup layout="block"
                               class="form-group has-feedback">
                     <h:inputText id="name"
                                  type="text"
@@ -43,14 +43,16 @@
 
                 <h:panelGroup layout="block" class="form-group has-feedback">
                     <h:outputText value="Type"/>
-                    <h:selectOneMenu value="#{animalModelBean.type}" converter="#{animalTypeConverter}">
+                    <h:selectOneMenu value="#{animalModelBean.type}"
+                                     converter="#{animalTypeConverter}">
                         <f:selectItems value="#{typeBean.typesMap}"/>
                     </h:selectOneMenu>
                 </h:panelGroup>
 
                 <h:panelGroup layout="block" class="form-group has-feedback">
                     <h:outputText value="Gender"/>
-                    <h:selectOneMenu value="#{animalModelBean.gender}" converter="#{genderConverter}">
+                    <h:selectOneMenu value="#{animalModelBean.gender}"
+                                     converter="#{genderConverter}">
                         <f:selectItems value="#{genderBean.genderMap}"/>
                     </h:selectOneMenu>
                 </h:panelGroup>
@@ -65,28 +67,19 @@
                     <span class="glyphicon glyphicon-user form-control-feedback"/>
                 </h:panelGroup>
 
-                <h:panelGroup layout="block" class="col-xs-4 col-xs-offset-8">
-                    <h:commandLink type="submit"
-                                   value="Button1"
-                                   action="#{animalRegistrationBean.saveAnimal()}">
-                        <f:ajax execute="animal-form" render="group"/>
-                    </h:commandLink>
-                </h:panelGroup>
-            </h:form>
-
-
-            <h:form id="form" enctype="multipart/form-data">
-                <h:panelGroup id="me1" layout="block" class="form-group">
-                    <h:outputLabel>Choose photo</h:outputLabel>
+                <h:panelGroup layout="block">
                     <h:inputFile id="file" value="#{photoBean.file}"/>
-                    <h:commandLink value="Upload" action="#{photoBean.upload}">
-                        <f:ajax execute="file" render="@form"/>
-                    </h:commandLink>
-                    <!--<p class="help-block">Example block-level help text here.</p>-->
-                    <h:inputTextarea value="#{photoBean.file}" readonly="true"/>
+                </h:panelGroup>
+                <br/>
+
+                <h:panelGroup layout="block" class="col-xs-4 col-xs-offset-8">
+                    <h:commandButton
+                                   value="OK"
+                                   action="#{animalRegistrationBean.saveAnimal()}">
+
+                    </h:commandButton>
                 </h:panelGroup>
             </h:form>
-
 
             <h:outputLink value="index.xhtml" immediate="true">Home page</h:outputLink><br/>
         </h:panelGroup>

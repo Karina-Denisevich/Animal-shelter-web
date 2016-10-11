@@ -4,5 +4,5 @@ import com.github.karina_denisevich.animal_shelter.model.entity.Animal;
 
 public interface AnimalService {
 
-    Animal saveAnimal(Animal animal);
+    Animal saveAnimal(final Animal animal);
 }

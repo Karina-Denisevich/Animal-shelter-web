@@ -7,9 +7,9 @@ import java.util.List;
 
 public interface RoleService {
 
-    Role saveRole(Role role);
+    void saveRole(final Role role);
 
-    Role findRole(RoleEnum roleEnum);
+    Role findRole(final RoleEnum roleEnum);
 
     List<Role> getAll();
 
