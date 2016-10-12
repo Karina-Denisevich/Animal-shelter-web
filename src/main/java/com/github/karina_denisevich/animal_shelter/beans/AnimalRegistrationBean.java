@@ -9,12 +9,11 @@ import com.github.karina_denisevich.animal_shelter.service.AnimalService;
 import com.github.karina_denisevich.animal_shelter.service.PhotoService;
 import com.github.karina_denisevich.animal_shelter.service.TypeService;
 import com.github.karina_denisevich.animal_shelter.service.UserService;
+import org.primefaces.context.RequestContext;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
 
-import javax.faces.context.ExternalContext;
-import javax.faces.context.FacesContext;
 import java.io.IOException;
 import java.io.Serializable;
 
@@ -23,7 +22,6 @@ import java.io.Serializable;
 public class AnimalRegistrationBean implements Serializable {
 
     private static final long serialVersionUID = 1L;
-    private static final String PAGE_TO_REDIRECT = "/views/index.xhtml";
 
     @Autowired
     public UserService userService;
@@ -70,12 +68,8 @@ public class AnimalRegistrationBean implements Serializable {
             photo.setPhotoLink(photoBean.getFileName());
             // photoService.savePhoto(photo);
         }
-        redirect();
-    }
 
-    private void redirect() throws IOException {
-        ExternalContext externalContext = FacesContext.getCurrentInstance().getExternalContext();
-        externalContext.redirect(externalContext.getRequestContextPath() + PAGE_TO_REDIRECT);
+        RequestContext.getCurrentInstance().execute("waitAndRedirect()");
     }
 
     public void setUserService(UserService userService) {

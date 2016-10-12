@@ -114,7 +114,6 @@
                         <f:ajax execute="reg-form" render="reg-form"/>
                     </h:commandLink>
                 </h:panelGroup>
-
             </h:form>
 
             <h:outputLink value="index.xhtml" immediate="true">Home page</h:outputLink><br/>
@@ -122,6 +121,12 @@
         </h:panelGroup>
     </h:panelGroup>
 
+    <script type="text/javascript">
+        function waitAndRedirect() {
+            alert('Success');
+            window.location.replace('/views/index.xhtml');
+        }
+    </script>
     <script type="text/javascript" src="/resources/plugins/jquery-2.2.3.min.js"></script>
     <script type="text/javascript" src="/resources/js/bootstrap.min.js"></script>
 </h:body>

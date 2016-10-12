@@ -6,16 +6,11 @@ import com.github.karina_denisevich.animal_shelter.model.entity.User;
 import com.github.karina_denisevich.animal_shelter.model.enums.RoleEnum;
 import com.github.karina_denisevich.animal_shelter.service.RoleService;
 import com.github.karina_denisevich.animal_shelter.service.UserService;
+import org.primefaces.context.RequestContext;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
 
-import javax.faces.application.FacesMessage;
-import javax.faces.component.UIComponent;
-import javax.faces.component.UIInput;
-import javax.faces.context.ExternalContext;
-import javax.faces.context.FacesContext;
-import javax.faces.event.ComponentSystemEvent;
 import java.io.IOException;
 import java.io.Serializable;
 
@@ -24,7 +19,6 @@ import java.io.Serializable;
 public class RegistrationBean implements Serializable {
 
     private static final long serialVersionUID = 1L;
-    private static final String PAGE_TO_REDIRECT = "/views/index.xhtml";
 
     @Autowired
     public UserService userService;
@@ -54,12 +48,7 @@ public class RegistrationBean implements Serializable {
 
         //userService.saveUser(user);
 
-        redirect();
-    }
-
-    private void redirect() throws IOException {
-        ExternalContext externalContext = FacesContext.getCurrentInstance().getExternalContext();
-        externalContext.redirect(externalContext.getRequestContextPath() + PAGE_TO_REDIRECT);
+        RequestContext.getCurrentInstance().execute("waitAndRedirect()");
     }
 
     public UserService getUserService() {
