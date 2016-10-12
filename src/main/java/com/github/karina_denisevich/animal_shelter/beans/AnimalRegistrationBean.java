@@ -13,17 +13,17 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
 
+import javax.faces.context.ExternalContext;
+import javax.faces.context.FacesContext;
+import java.io.IOException;
 import java.io.Serializable;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collection;
-import java.util.Collections;
 
 @Component
 @Scope("request")
 public class AnimalRegistrationBean implements Serializable {
 
     private static final long serialVersionUID = 1L;
+    private static final String PAGE_TO_REDIRECT = "/views/index.xhtml";
 
     @Autowired
     public UserService userService;
@@ -49,6 +49,35 @@ public class AnimalRegistrationBean implements Serializable {
     public AnimalRegistrationBean() {
     }
 
+    public void saveAnimal() throws IOException {
+
+        User user = userService.findUserByLogin(userBean.getCurrentUserName());
+        Type type = typeService.findType(animalModelBean.getType().getType());
+
+        Animal animal = new Animal();
+        animal.setName(animalModelBean.getName());
+        animal.setInfo(animalModelBean.getInfo());
+        animal.setGender(animalModelBean.getGender());
+        animal.setType(type);
+        animal.setUser(user);
+        // animalService.saveAnimal(animal);
+        System.out.println("++++++++++++++++");
+
+        photoBean.upload();
+        if (!(photoBean.getFileName() == null || photoBean.getFileName().isEmpty())) {
+            Photo photo = new Photo();
+            photo.setAnimal(animal);
+            photo.setPhotoLink(photoBean.getFileName());
+            // photoService.savePhoto(photo);
+        }
+        redirect();
+    }
+
+    private void redirect() throws IOException {
+        ExternalContext externalContext = FacesContext.getCurrentInstance().getExternalContext();
+        externalContext.redirect(externalContext.getRequestContextPath() + PAGE_TO_REDIRECT);
+    }
+
     public void setUserService(UserService userService) {
         this.userService = userService;
     }
@@ -67,27 +96,5 @@ public class AnimalRegistrationBean implements Serializable {
 
     public void setUserBean(UserBean userBean) {
         this.userBean = userBean;
-    }
-
-    public void saveAnimal() {
-
-        User user = userService.findUserByLogin(userBean.getCurrentUserName());
-        Type type = typeService.findType(animalModelBean.getType().getType());
-
-        Animal animal = new Animal();
-        animal.setName(animalModelBean.getName());
-        animal.setInfo(animalModelBean.getInfo());
-        animal.setGender(animalModelBean.getGender());
-        animal.setType(type);
-        animal.setUser(user);
-        animalService.saveAnimal(animal);
-
-        photoBean.upload();
-        if (!photoBean.getFileName().isEmpty()) {
-            Photo photo = new Photo();
-            photo.setAnimal(animal);
-            photo.setPhotoLink(photoBean.getFileName());
-            photoService.savePhoto(photo);
-        }
     }
 }

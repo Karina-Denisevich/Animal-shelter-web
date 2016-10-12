@@ -13,8 +13,10 @@ import org.springframework.stereotype.Component;
 import javax.faces.application.FacesMessage;
 import javax.faces.component.UIComponent;
 import javax.faces.component.UIInput;
+import javax.faces.context.ExternalContext;
 import javax.faces.context.FacesContext;
 import javax.faces.event.ComponentSystemEvent;
+import java.io.IOException;
 import java.io.Serializable;
 
 @Component
@@ -22,6 +24,7 @@ import java.io.Serializable;
 public class RegistrationBean implements Serializable {
 
     private static final long serialVersionUID = 1L;
+    private static final String PAGE_TO_REDIRECT = "/views/index.xhtml";
 
     @Autowired
     public UserService userService;
@@ -35,7 +38,7 @@ public class RegistrationBean implements Serializable {
     public RegistrationBean() {
     }
 
-    public void saveUser() {
+    public void saveUser() throws IOException {
         Role role = roleService.findRole(RoleEnum.ROLE_USER);
 
         boolean enabled = true;
@@ -49,7 +52,14 @@ public class RegistrationBean implements Serializable {
         user.setRole(role);
         user.setEnabled(enabled);
 
-          userService.saveUser(user);
+        //userService.saveUser(user);
+
+        redirect();
+    }
+
+    private void redirect() throws IOException {
+        ExternalContext externalContext = FacesContext.getCurrentInstance().getExternalContext();
+        externalContext.redirect(externalContext.getRequestContextPath() + PAGE_TO_REDIRECT);
     }
 
     public UserService getUserService() {

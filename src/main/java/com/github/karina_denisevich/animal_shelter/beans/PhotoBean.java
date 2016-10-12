@@ -1,6 +1,5 @@
 package com.github.karina_denisevich.animal_shelter.beans;
 
-import com.github.karina_denisevich.animal_shelter.model.entity.Photo;
 import com.github.karina_denisevich.animal_shelter.model.entity.User;
 import com.github.karina_denisevich.animal_shelter.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -60,8 +59,8 @@ public class PhotoBean implements Serializable {
     }
 
     private File getTargetDirectory() {
-
         File dir = new File("D:\\Users\\Karina\\Desktop\\AnimalShelter\\photos\\" + getFolderName());
+
         if (!dir.exists()) {
             try {
                 Files.createDirectory(Paths.get("D:\\Users\\Karina\\Desktop\\AnimalShelter\\photos\\" + getFolderName()));

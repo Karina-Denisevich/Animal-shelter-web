@@ -68,20 +68,21 @@
                 </h:panelGroup>
 
                 <h:panelGroup layout="block">
-                    <h:inputFile id="file" value="#{photoBean.file}"/>
+                    <h:inputFile id="file"
+                                 value="#{photoBean.file}"
+                                 validator="#{photoValidator.validateFile}"/>
+                    <h:message for="file" style="color: red"/>
                 </h:panelGroup>
                 <br/>
 
                 <h:panelGroup layout="block" class="col-xs-4 col-xs-offset-8">
-                    <h:commandButton
-                                   value="OK"
+                    <h:commandLink value="Add"
                                    action="#{animalRegistrationBean.saveAnimal()}">
-
-                    </h:commandButton>
+                    </h:commandLink>
                 </h:panelGroup>
             </h:form>
 
-            <h:outputLink value="index.xhtml" immediate="true">Home page</h:outputLink><br/>
+            <h:outputLink value="/views/index.xhtml" immediate="true">Home page</h:outputLink><br/>
         </h:panelGroup>
     </h:panelGroup>
 
