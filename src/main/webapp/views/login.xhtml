@@ -42,16 +42,14 @@
                 </h:panelGroup>
 
                 <h:panelGroup layout="block" class="col-xs-4 col-xs-offset-8">
-                    <h:commandLink type="submit"
+                    <h:commandLink value="Log in"
+                                   type="submit"
                                    action="#{authenticationBean.doLogin}"
-                                   class="btn btn-primary btn-block btn-flat">Sign In
+                                   class="btn btn-primary btn-block btn-flat">
                     </h:commandLink>
                 </h:panelGroup>
-
             </h:form>
 
-            <h:outputLink value="index.xhtml" immediate="true">Home page</h:outputLink><br/>
-            <!--<h:outputLink value="#">I forgot my password</h:outputLink><br/>-->
             <h:outputLink value="register.xhtml" class="text-center">Register a new membership</h:outputLink>
 
         </h:panelGroup>

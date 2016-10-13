@@ -34,13 +34,18 @@ public class UserBean implements Serializable {
         return userService.findUserByLogin("Karina").getEmail();
     }
 
-    public String getCurrentUserName(){
-        User user = (User)SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+    public String getCurrentUserName() {
+        User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         return user.getUsername();
     }
 
-    public String getCurrentUserRole(){
-        User user = (User)SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+    public String getCurrentUserRole() {
+        User user;
+        try {
+            user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        } catch (Exception ex) {
+            return "ROLE_ANONYMOUS";
+        }
         return user.getAuthorities().iterator().next().toString();
     }
 }

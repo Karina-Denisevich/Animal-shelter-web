@@ -47,8 +47,6 @@ public class RegistrationBean implements Serializable {
         user.setEnabled(enabled);
 
         //userService.saveUser(user);
-
-        RequestContext.getCurrentInstance().execute("waitAndRedirect()");
     }
 
     public UserService getUserService() {
