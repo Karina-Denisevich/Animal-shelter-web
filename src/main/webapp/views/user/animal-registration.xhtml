@@ -5,7 +5,8 @@
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
       xmlns:f="http://xmlns.jcp.org/jsf/core"
-      xmlns:a="http://xmlns.jcp.org/jsf/passthrough" xmlns:p="http://www.springframework.org/tags/form">
+      xmlns:a="http://xmlns.jcp.org/jsf/passthrough"
+      xmlns:p="http://www.springframework.org/tags/form">
 <!--xmlns:h="http://java.sun.com/jsf/html"-->
 
 <h:head>
@@ -24,10 +25,11 @@
             <h:outputLink value="/views/index.xhtml"><strong>Admin</strong>LTE</h:outputLink>
         </h:panelGroup>
 
-        <h:panelGroup id="group" layout="block" class="register-box-body">
+        <h:panelGroup layout="block" class="register-box-body">
             <p class="login-box-msg">Add a new animal</p>
-            <h:form prependId="false" id="animal-form" enctype="multipart/form-data">
-                <!--enctype="multipart/form-data"-->
+
+            <h:form prependId="false" enctype="multipart/form-data">
+
                 <h:panelGroup layout="block"
                               class="form-group has-feedback">
                     <h:inputText id="name"
@@ -77,6 +79,8 @@
 
                 <h:panelGroup layout="block" class="col-xs-4 col-xs-offset-8">
                     <h:commandLink value="Add"
+                                   type="submit"
+                                   class="btn btn-primary btn-block btn-flat"
                                    action="#{animalRegistrationBean.saveAnimal}">
                     </h:commandLink>
                 </h:panelGroup>
@@ -86,12 +90,6 @@
         </h:panelGroup>
     </h:panelGroup>
 
-    <script type="text/javascript">
-        function waitAndRedirect() {
-            alert('Success');
-            window.location.replace('/views/index.xhtml');
-        }
-    </script>
     <script type="text/javascript" src="/resources/plugins/jquery-2.2.3.min.js"></script>
     <script type="text/javascript" src="/resources/js/bootstrap.min.js"></script>
 </h:body>

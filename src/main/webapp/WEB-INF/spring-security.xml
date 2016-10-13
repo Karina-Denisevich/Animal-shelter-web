@@ -8,8 +8,8 @@
         http://www.springframework.org/schema/security/spring-security.xsd">
 
     <bean:http auto-config="true" use-expressions="false">
-        <bean:intercept-url pattern="/views/user/animal-registration.xhtml" access="ROLE_USER, ROLE_ADMIN"/>
-        <bean:intercept-url pattern="/views/admin/admin.xhtml" access="ROLE_ADMIN"/>
+        <bean:intercept-url pattern="/views/user/**" access="ROLE_USER, ROLE_ADMIN"/>
+        <bean:intercept-url pattern="/views/admin/**" access="ROLE_ADMIN"/>
         <bean:form-login login-page="/views/login.xhtml"
                          password-parameter="password"
                          username-parameter="username"

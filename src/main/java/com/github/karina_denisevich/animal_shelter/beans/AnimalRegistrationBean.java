@@ -68,8 +68,6 @@ public class AnimalRegistrationBean implements Serializable {
             photo.setPhotoLink(photoBean.getFileName());
             // photoService.savePhoto(photo);
         }
-
-        RequestContext.getCurrentInstance().execute("waitAndRedirect()");
     }
 
     public void setUserService(UserService userService) {

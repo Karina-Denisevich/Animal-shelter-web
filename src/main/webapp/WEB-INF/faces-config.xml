@@ -9,4 +9,14 @@
             org.springframework.web.jsf.el.SpringBeanFacesELResolver
         </el-resolver>
     </application>
+
+    <navigation-rule>
+        <from-view-id>/views/user/animal-registration.xhtml</from-view-id>
+        <navigation-case>
+            <from-action>#{animalRegistrationBean.saveAnimal}</from-action>
+            <if>#{userBean.currentUserRole == "ROLE_ADMIN"}</if>
+            <to-view-id>/views/admin/admin.xhtml</to-view-id>
+            <redirect/>
+        </navigation-case>
+    </navigation-rule>
 </faces-config>

@@ -59,11 +59,12 @@ public class PhotoBean implements Serializable {
     }
 
     private File getTargetDirectory() {
-        File dir = new File("D:\\Users\\Karina\\Desktop\\AnimalShelter\\photos\\" + getFolderName());
+        String parent = "D:\\Users\\Karina\\Desktop\\AnimalShelter\\photos\\";
+        File dir = new File(parent + getFolderName());
 
         if (!dir.exists()) {
             try {
-                Files.createDirectory(Paths.get("D:\\Users\\Karina\\Desktop\\AnimalShelter\\photos\\" + getFolderName()));
+                Files.createDirectory(Paths.get(parent + getFolderName()));
             } catch (IOException e) {
                 e.printStackTrace();
             }

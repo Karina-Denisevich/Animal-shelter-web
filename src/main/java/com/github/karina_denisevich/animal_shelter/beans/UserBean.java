@@ -7,6 +7,7 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.stereotype.Component;
 
+import javax.annotation.PostConstruct;
 import java.io.Serializable;
 
 @Component
@@ -14,6 +15,15 @@ import java.io.Serializable;
 public class UserBean implements Serializable {
 
     private final UserService userService;
+    private String name = "K";
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
 
     @Autowired
     public UserBean(UserService userService) {
@@ -26,8 +36,11 @@ public class UserBean implements Serializable {
 
     public String getCurrentUserName(){
         User user = (User)SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-        String name = user.getUsername(); //get logged in username
+        return user.getUsername();
+    }
 
-        return name;
+    public String getCurrentUserRole(){
+        User user = (User)SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        return user.getAuthorities().iterator().next().toString();
     }
 }

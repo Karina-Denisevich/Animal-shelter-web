@@ -15,6 +15,8 @@ import java.util.List;
 @Scope("request")
 public class PhotoValidator {
 
+    private static final int MAX_SIZE = 2097152;
+
     public void validateFile(FacesContext ctx, UIComponent comp, Object value) {
         if (value != null) {
             FacesMessage message = null;
@@ -22,8 +24,7 @@ public class PhotoValidator {
 
             if (!("image/jpeg".equals(file.getContentType()) || "image/png".equals(file.getContentType()))) {
                 message = new FacesMessage(file.getContentType() + " is not a jpg or png file");
-            }
-            else if (file.getSize() > 2097152) {
+            } else if (file.getSize() > MAX_SIZE) {
                 message = new FacesMessage("file too big");
             }
             if (message != null) {
