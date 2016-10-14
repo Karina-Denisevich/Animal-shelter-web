@@ -30,10 +30,6 @@ public class UserBean implements Serializable {
         this.userService = userService;
     }
 
-    public String getFirstUserMail() {
-        return userService.findUserByLogin("Karina").getEmail();
-    }
-
     public String getCurrentUserName() {
         User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         return user.getUsername();

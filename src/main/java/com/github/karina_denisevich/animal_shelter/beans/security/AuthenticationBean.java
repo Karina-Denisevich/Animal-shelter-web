@@ -23,10 +23,17 @@ public class AuthenticationBean {
         return null;
     }
 
-//    public String doLogout() {
-//        FacesContext facesContext = FacesContext.getCurrentInstance();
-//        facesContext.getExternalContext().invalidateSession();
-//
-//        return "/views/logout.xhtml";
-//    }
+    public String doLogout() throws ServletException, IOException {
+        System.out.println("In doLogout()");
+        ExternalContext context = FacesContext.getCurrentInstance().getExternalContext();
+
+        RequestDispatcher dispatcher = ((ServletRequest) context.getRequest())
+                .getRequestDispatcher("/logout");
+
+        dispatcher.forward((ServletRequest) context.getRequest(),
+                (ServletResponse) context.getResponse());
+
+        FacesContext.getCurrentInstance().responseComplete();
+        return null;
+    }
 }
