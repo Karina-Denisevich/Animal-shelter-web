@@ -13,12 +13,12 @@ import javax.faces.event.ComponentSystemEvent;
 
 @Component
 @Scope("request")
-public class LoginValidator {
+public class EmailValidator {
 
     @Autowired
     public UserService userService;
 
-    public LoginValidator() {
+    public EmailValidator() {
     }
 
     public UserService getUserService() {
@@ -29,24 +29,25 @@ public class LoginValidator {
         this.userService = userService;
     }
 
-    public void validateLogin(ComponentSystemEvent event) {
+    public void validateEmail(ComponentSystemEvent event) {
         UIComponent components = event.getComponent();
 
         // get password
-        UIInput uiInputLogin = (UIInput) components.findComponent("login");
-        String login = uiInputLogin.getLocalValue() == null ? ""
-                : uiInputLogin.getLocalValue().toString();
-        String loginId = uiInputLogin.getClientId();
 
-        if (login.isEmpty()) {
+        UIInput uiInputEmail = (UIInput) components.findComponent("email");
+        String email = uiInputEmail.getLocalValue() == null ? ""
+                : uiInputEmail.getLocalValue().toString();
+        String emailId = uiInputEmail.getClientId();
+
+        if (email.isEmpty()) {
             return;
         }
 
-        if (userService.findUserByLogin(login) != null) {
+        if (userService.findUserByEmail(email) != null) {
             FacesContext fc = FacesContext.getCurrentInstance();
-            FacesMessage msg = new FacesMessage("There is already the person with the same name!");
+            FacesMessage msg = new FacesMessage("There is already the person with the same email!");
             msg.setSeverity(FacesMessage.SEVERITY_ERROR);
-            fc.addMessage(loginId, msg);
+            fc.addMessage(emailId, msg);
             fc.renderResponse();
         }
     }

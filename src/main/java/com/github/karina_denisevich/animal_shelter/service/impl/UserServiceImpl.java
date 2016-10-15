@@ -29,6 +29,12 @@ public class UserServiceImpl implements UserService {
         return userRepository.findUserByLogin(login);
     }
 
+    @Transactional(readOnly = true)
+    @Override
+    public User findUserByEmail(String email) {
+        return userRepository.findUserByEmail(email);
+    }
+
     @Override
     public void delete(long id) {
         userRepository.delete(id);

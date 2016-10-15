@@ -17,10 +17,10 @@ public class User implements Serializable {
     @Column(name = "id", unique = true, nullable = false)
     private long id;
 
-    @Column(name = "login", unique = true, nullable = false)
+    @Column(name = "login", nullable = false)
     private String login;
 
-    @Column(name = "email", nullable = false)
+    @Column(name = "email", unique = true, nullable = false)
     private String email;
 
     @Column(name = "password", nullable = false)

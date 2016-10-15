@@ -30,7 +30,7 @@
             <h:form prependId="false" id="reg-form">
 
                 <f:event listener="#{passwordValidator.validatePassword}" type="postValidate"/>
-                <f:event listener="#{loginValidator.validateLogin}" type="postValidate"/>
+                <f:event listener="#{emailValidator.validateEmail}" type="postValidate"/>
 
                 <h:panelGroup layout="block"
                               class="form-group has-feedback">
@@ -45,9 +45,10 @@
                     <span class="glyphicon glyphicon-user form-control-feedback"/>
                 </h:panelGroup>
 
-                <h:panelGroup layout="block" class="form-group has-feedback">
+                <h:panelGroup layout="block"
+                              class="form-group has-feedback">
                     <h:inputText id="email"
-                                 type="email"
+                                 type="text"
                                  class="form-control"
                                  a:placeholder="*Email"
                                  value="#{userModelBean.email}"

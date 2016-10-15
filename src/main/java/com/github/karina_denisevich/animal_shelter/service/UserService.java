@@ -8,5 +8,7 @@ public interface UserService {
 
     User findUserByLogin(final String login);
 
+    User findUserByEmail(String email);
+
     void delete(long id);
 }
