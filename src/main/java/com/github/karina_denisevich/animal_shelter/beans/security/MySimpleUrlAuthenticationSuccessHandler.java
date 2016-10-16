@@ -1,5 +1,6 @@
 package com.github.karina_denisevich.animal_shelter.beans.security;
 
+import org.apache.log4j.Logger;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.web.DefaultRedirectStrategy;
@@ -16,7 +17,8 @@ import java.util.Collection;
 
 public class MySimpleUrlAuthenticationSuccessHandler implements AuthenticationSuccessHandler {
 
-    //    protected Log logger = LogFactory.getLog(this.getClass());
+    private final static Logger logger = Logger.getLogger(MySimpleUrlAuthenticationSuccessHandler.class);
+
     private RedirectStrategy redirectStrategy = new DefaultRedirectStrategy();
 
     @Override
@@ -31,11 +33,10 @@ public class MySimpleUrlAuthenticationSuccessHandler implements AuthenticationSu
                           HttpServletResponse response, Authentication authentication) throws IOException {
         String targetUrl = determineTargetUrl(authentication);
 
-//        if (response.isCommitted()) {
-//            logger.debug("Response has already been committed. Unable to redirect to " + targetUrl);
-//            return;
-//        }
-
+        if (response.isCommitted()) {
+            logger.debug("Response has already been committed. Unable to redirect to " + targetUrl);
+            return;
+        }
         redirectStrategy.sendRedirect(request, response, targetUrl);
     }
 
