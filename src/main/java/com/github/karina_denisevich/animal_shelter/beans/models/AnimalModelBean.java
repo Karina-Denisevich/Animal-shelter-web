@@ -11,9 +11,7 @@ import java.io.Serializable;
 
 @Component
 @Scope("request")
-public class AnimalModelBean implements Serializable {
-
-    private static final long serialVersionUID = 1L;
+public class AnimalModelBean {
 
     private String name;
 

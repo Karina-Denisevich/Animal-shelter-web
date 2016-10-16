@@ -19,9 +19,7 @@ import java.util.Scanner;
 
 @Component
 @Scope("request")
-public class PhotoBean implements Serializable {
-
-    private static final long serialVersionUID = 1L;
+public class PhotoBean {
 
     private Part file;
     private String fileContent;

@@ -19,9 +19,7 @@ import java.io.Serializable;
 
 @Component
 @Scope("request")
-public class AnimalRegistrationBean implements Serializable {
-
-    private static final long serialVersionUID = 1L;
+public class AnimalRegistrationBean {
 
     @Autowired
     public UserService userService;

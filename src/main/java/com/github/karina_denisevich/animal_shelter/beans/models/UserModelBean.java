@@ -8,9 +8,7 @@ import java.io.Serializable;
 
 @Component
 @Scope("request")
-public class UserModelBean implements Serializable {
-
-    private static final long serialVersionUID = 1L;
+public class UserModelBean {
 
     private String login;
 
