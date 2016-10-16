@@ -1,15 +1,12 @@
 package com.github.karina_denisevich.animal_shelter.beans.converters;
 
-import com.github.karina_denisevich.animal_shelter.model.entity.Type;
 import com.github.karina_denisevich.animal_shelter.model.enums.GenderEnum;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
 
-import javax.faces.application.FacesMessage;
 import javax.faces.component.UIComponent;
 import javax.faces.context.FacesContext;
 import javax.faces.convert.Converter;
-import javax.faces.convert.ConverterException;
 
 @Component
 @Scope("request")

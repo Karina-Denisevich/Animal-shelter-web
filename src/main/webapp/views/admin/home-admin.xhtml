@@ -7,24 +7,26 @@
       xmlns:f="http://java.sun.com/jsf/core">
 
 <h:head>
-    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
-    <meta content="text/html; charset=UTF-8" http-equiv="Content-Type"/>
-    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <f:facet name="first">
+        <title>Animal Shelter</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+        <meta content="text/html; charset=UTF-8" http-equiv="Content-Type"/>
+        <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport"/>
+    </f:facet>
+    <f:facet name="middle">
+        <link rel="stylesheet" href="/resources/css/bootstrap.min.css"/>
+        <link rel="icon" href="/resources/images/animal.ico"/>
+        <link href="/resources/css/offcanvas.css" rel="stylesheet"/>
+    </f:facet>
 </h:head>
 
 <h:body>
     <ui:insert name="header">
-        <ui:include src="../../blocks/admin-header.xhtml"/>
+        <ui:include src="../../blocks/admin/admin-header.xhtml"/>
     </ui:insert>
-
-    <f:metadata>
-        <f:viewParam id="name1" name="name1" value="Admin"/>
-    </f:metadata>
 
     <h:form>
         <h:inputText value="Admin"/>
-        <h:commandLink action="#{authenticationBean.doLogout}">
-            logout</h:commandLink>
     </h:form>
 </h:body>
 </html>
