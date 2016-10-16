@@ -4,7 +4,8 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://java.sun.com/jsf/html"
       xmlns:ui="http://java.sun.com/jsf/facelets"
-      xmlns:f="http://java.sun.com/jsf/core">
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
 
 <h:head>
     <f:facet name="first">
@@ -17,6 +18,7 @@
         <link rel="stylesheet" href="/resources/css/bootstrap.min.css"/>
         <link rel="icon" href="/resources/images/animal.ico"/>
         <link href="/resources/css/offcanvas.css" rel="stylesheet"/>
+        <link href="/resources/css/jumbotron.css" rel="stylesheet"/>
     </f:facet>
 </h:head>
 
@@ -32,5 +34,39 @@
     <h:form>
         <h:inputText value="User or anon"/>
     </h:form>
+
+
+    <h:panelGroup layout="block" styleClass="jumbotron">
+        <h:panelGroup layout="block" styleClass="container">
+            <h1>Animal Shelter</h1>
+        </h:panelGroup>
+    </h:panelGroup>
+
+
+
+
+    <p:dataTable var="element"
+                 value="#{animalBean.model}"
+                 paginator="true"
+                 rows="3">
+
+        <p:column headerText="Name">
+            <h:outputText value="#{element.name}"/>
+        </p:column>
+        <p:column headerText="Type">
+            <h:outputText converter="#{animalTypeConverter}" value="#{element.type}"/>
+        </p:column>
+        <p:column headerText="Gender">
+            <h:outputText value="#{element.gender}"/>
+        </p:column>
+        <p:column headerText="Info">
+            <h:outputText value="#{element.info}"/>
+        </p:column>
+        <p:column headerText="Photo">
+            <h:outputText value="#{element.photos.size()}"/>
+        </p:column>
+
+    </p:dataTable>
+
 </h:body>
 </html>
