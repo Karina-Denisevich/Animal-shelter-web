@@ -69,13 +69,4 @@ public class Type implements Serializable {
         result = 31 * result + type.hashCode();
         return result;
     }
-
-    @Override
-    public String toString() {
-        return "Type{" +
-                "id=" + id +
-                ", animalType=" + type +
-                ", animals=" + animals +
-                '}';
-    }
 }

@@ -6,6 +6,7 @@ import java.util.List;
 
 public interface AnimalService {
 
+    Animal getAnimalById(Long id);
     Animal saveAnimal(final Animal animal);
     List<Animal> getAllAnimal();
 }

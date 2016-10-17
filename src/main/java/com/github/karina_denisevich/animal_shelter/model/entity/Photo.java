@@ -17,7 +17,7 @@ public class Photo implements Serializable {
     @Column(name = "photo_link")
     private String photoLink;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne
     @JoinColumn(name = "animal_id")
     private Animal animal;
 
@@ -46,14 +46,5 @@ public class Photo implements Serializable {
 
     public void setAnimal(Animal animal) {
         this.animal = animal;
-    }
-
-    @Override
-    public String toString() {
-        return "Photo{" +
-                "id=" + id +
-                ", photo_link='" + photoLink + '\'' +
-                ", animal=" + animal +
-                '}';
     }
 }

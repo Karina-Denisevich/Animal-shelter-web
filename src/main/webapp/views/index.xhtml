@@ -2,9 +2,9 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
         "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:h="http://java.sun.com/jsf/html"
       xmlns:ui="http://java.sun.com/jsf/facelets"
       xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html"
       xmlns:p="http://primefaces.org/ui">
 
 <h:head>
@@ -43,30 +43,26 @@
     </h:panelGroup>
 
 
+    <h:form prependId="false">
+        <p:dataTable var="element"
+                     value="#{animalBean.model}"
+                     editable="false" widgetVar="documentTable">
 
+            <p:column headerText="Photo">
+                <p:graphicImage width="70" cache="false" value="#{photoOutputBean.photo}"
+                                alt="Image not avilable">
+                    <f:param name="animal" value="#{element.id}"/>
+                </p:graphicImage>
+            </p:column>
+        </p:dataTable>
+    </h:form>
 
-    <p:dataTable var="element"
-                 value="#{animalBean.model}"
-                 paginator="true"
-                 rows="3">
-
-        <p:column headerText="Name">
-            <h:outputText value="#{element.name}"/>
-        </p:column>
-        <p:column headerText="Type">
-            <h:outputText converter="#{animalTypeConverter}" value="#{element.type}"/>
-        </p:column>
-        <p:column headerText="Gender">
-            <h:outputText value="#{element.gender}"/>
-        </p:column>
-        <p:column headerText="Info">
-            <h:outputText value="#{element.info}"/>
-        </p:column>
-        <p:column headerText="Photo">
-            <h:outputText value="#{element.photos.size()}"/>
-        </p:column>
-
-    </p:dataTable>
+    <h:panelGroup layout="block" id="footer">
+        <h:panelGroup layout="block" class="navbar-fixed-bottom" style="text-align: center">
+            <hr></hr>
+            <p class="text-muted credit foot">© Denisevich K.S. 2016</p>
+        </h:panelGroup>
+    </h:panelGroup>
 
 </h:body>
 </html>

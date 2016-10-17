@@ -155,19 +155,4 @@ public class User implements Serializable {
         result = 31 * result + (email != null ? email.hashCode() : 0);
         return result;
     }
-
-    @Override
-    public String toString() {
-        return "User{" +
-                "id=" + id +
-                ", login='" + login + '\'' +
-                ", email='" + email + '\'' +
-                ", password='" + password + '\'' +
-                ", city='" + city + '\'' +
-                ", phoneNumber='" + phoneNumber + '\'' +
-                ", enabled=" + enabled +
-                ", animals=" + animals +
-                ", role=" + role +
-                '}';
-    }
 }

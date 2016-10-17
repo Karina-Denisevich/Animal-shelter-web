@@ -34,7 +34,7 @@ public class Animal implements Serializable {
     @OneToMany(mappedBy = "animal", cascade = {CascadeType.MERGE, CascadeType.REMOVE, CascadeType.PERSIST})
     private Collection<Photo> photos;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne
     @JoinColumn(name = "user_id")
     private User user;
 
@@ -126,18 +126,5 @@ public class Animal implements Serializable {
         result = 31 * result + (name != null ? name.hashCode() : 0);
         result = 31 * result + (gender != null ? gender.hashCode() : 0);
         return result;
-    }
-
-    @Override
-    public String toString() {
-        return "Animal{" +
-                "id=" + id +
-                ", name='" + name + '\'' +
-                ", gender=" + gender +
-                ", info='" + info + '\'' +
-                ", animalType=" + type +
-                ", photos=" + photos +
-                ", user=" + user +
-                '}';
     }
 }

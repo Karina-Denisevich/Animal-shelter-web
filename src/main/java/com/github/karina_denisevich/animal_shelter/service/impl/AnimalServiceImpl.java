@@ -20,6 +20,12 @@ public class AnimalServiceImpl implements AnimalService {
         this.animalRepository = animalRepository;
     }
 
+
+    @Override
+    public Animal getAnimalById(Long id) {
+        return animalRepository.getOne(id);
+    }
+
     @Override
     public Animal saveAnimal(final Animal animal) {return animalRepository.save(animal);
     }
