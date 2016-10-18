@@ -31,7 +31,7 @@ public class PhotoOutputBean implements Serializable {
     private StreamedContent photo;
     private List<Animal> animalList;
 
-    public StreamedContent getPhoto() throws IOException{
+    public StreamedContent getPhoto() throws IOException {
 
         FacesContext context = FacesContext.getCurrentInstance();
 
@@ -47,10 +47,10 @@ public class PhotoOutputBean implements Serializable {
             Animal animal = animalService.getAnimalById(Long.valueOf(id));
             List<Photo> photos = (List<Photo>) animal.getPhotos();
 
-            if(photos.size()>0){
+            if (photos.size() > 0) {
                 Photo photo = photos.get(0);
-                path = Paths.get(p, photo.getPhotoLink().substring(0,3)+"\\"
-                +photo.getPhotoLink());
+                path = Paths.get(p, photo.getPhotoLink().substring(0, 3) + "\\"
+                        + photo.getPhotoLink());
             }
 
             return new DefaultStreamedContent(
@@ -71,50 +71,4 @@ public class PhotoOutputBean implements Serializable {
     }
 
     private Animal animal;
-
-//    public StreamedContent getUploadedFileAsStream() throws IOException {
-//        String p = "D:\\Users\\Karina\\Desktop\\AnimalShelter\\photos\\";
-//        Path path = Paths.get(p + "image.jpg");
-//
-//        FacesContext context = FacesContext.getCurrentInstance();
-//
-//        if (context.getCurrentPhaseId() == PhaseId.RENDER_RESPONSE) {
-//            System.out.println("000");
-//        }
-//
-//        else {
-//
-//            String id = context.getExternalContext().getRequestParameterMap()
-//                    .get("animal");
-//            System.out.println(id);
-//
-//        }
-////
-////        if (context.getCurrentPhaseId() == PhaseId.RENDER_RESPONSE) {
-////            System.out.println("0000000");
-////        } else {
-////
-////            String id = context.getExternalContext().getRequestParameterMap()
-////                    .get("animal");
-////            System.out.println("****" + id);
-////        }
-////
-//////        if (animalId != null) {
-//////            Animal animal = animalService.getAnimalById(Long.valueOf(animalId));
-//////            System.out.println("+++++" + animal.getName());
-//////
-//////        }
-////        return new DefaultStreamedContent(
-////                new ByteArrayInputStream(Files.readAllBytes(path)));
-//
-//        return new DefaultStreamedContent();
-//    }
-
-//    public Animal getAnimal() {
-//        return animal;
-//    }
-//
-//    public void setAnimal(Animal animal) {
-//        this.animal = animal;
-//    }
 }

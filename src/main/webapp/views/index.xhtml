@@ -43,18 +43,71 @@
     </h:panelGroup>
 
 
-    <h:form prependId="false">
+    <h:form id="form" prependId="false">
         <p:dataTable var="element"
                      value="#{animalBean.model}"
-                     editable="false" widgetVar="documentTable">
+                     paginator="true"
+                     rows="4"
+                     paginatorTemplate="{RowsPerPageDropdown} {FirstPageLink}
+                      {PreviousPageLink} {CurrentPageReport} {NextPageLink} {LastPageLink}"
+                     rowsPerPageTemplate="4,8,12">
 
+            <p:column headerText="Id" style="width: 40px">
+                <h:outputText value="#{element.id}"/>
+            </p:column>
             <p:column headerText="Photo">
-                <p:graphicImage width="70" cache="false" value="#{photoOutputBean.photo}"
+                <!--cache to false-->
+                <p:graphicImage width="100" cache="false" value="#{photoOutputBean.photo}"
                                 alt="Image not avilable">
                     <f:param name="animal" value="#{element.id}"/>
                 </p:graphicImage>
             </p:column>
+            <p:column headerText="Name">
+                <h:outputText value="#{element.name}"/>
+            </p:column>
+            <p:column headerText="Type">
+                <h:outputText value="#{element.type}"
+                              converter="#{animalTypeConverter}"/>
+            </p:column>
+            <p:column headerText="Gender">
+                <h:outputText value="#{element.gender}"
+                              converter="#{genderConverter}"/>
+            </p:column>
+            <p:column headerText="Info">
+                <h:outputText value="#{element.info}"/>
+            </p:column>
+            <p:column headerText="User" style="width:92px;text-align: center">
+                <p:commandButton update=":form:userDetail"
+                                 oncomplete="PF('userDialog').show()"
+                                 icon="ui-icon-search"
+                                 title="View">
+                    <f:setPropertyActionListener value="#{element}" target="#{animalBean.selectedAnimal}"/>
+                </p:commandButton>
+            </p:column>
         </p:dataTable>
+
+        <p:dialog header="User Info" widgetVar="userDialog" modal="true"
+                  showEffect="explode" hideEffect="explode" resizable="false">
+            <p:outputPanel id="userDetail" style="text-align:center;">
+                <p:panelGrid columns="2" rendered="#{not empty animalBean.selectedAnimal}">
+                    <h:outputText value="Id:" style="color: #001a35"/>
+                    <h:outputText value="#{animalBean.selectedAnimal.user.id}"/>
+
+                    <h:outputText value="Login:" style="color: #001a35"/>
+                    <h:outputText value="#{animalBean.selectedAnimal.user.login}"/>
+
+                    <h:outputText value="City:" style="color: #001a35"/>
+                    <h:outputText value="#{animalBean.selectedAnimal.user.city}"/>
+
+                    <h:outputText value="Number:" style="color: #001a35"/>
+                    <h:outputText value="#{animalBean.selectedAnimal.user.phoneNumber}"/>
+
+                    <h:outputText value="Email:" style="color: #001a35"/>
+                    <h:outputText value="#{animalBean.selectedAnimal.user.email}"/>
+                </p:panelGrid>
+            </p:outputPanel>
+        </p:dialog>
+
     </h:form>
 
     <h:panelGroup layout="block" id="footer">

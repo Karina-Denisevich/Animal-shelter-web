@@ -20,6 +20,7 @@ public class AnimalBean implements Serializable {
     AnimalService animalService;
 
     private List<Animal> model;
+    private Animal selectedAnimal;
 
     @PostConstruct
     public void init() {
@@ -32,5 +33,13 @@ public class AnimalBean implements Serializable {
 
     public void setModel(List<Animal> model) {
         this.model = model;
+    }
+
+    public Animal getSelectedAnimal() {
+        return selectedAnimal;
+    }
+
+    public void setSelectedAnimal(Animal selectedAnimal) {
+        this.selectedAnimal = selectedAnimal;
     }
 }
