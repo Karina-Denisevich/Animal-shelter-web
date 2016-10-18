@@ -52,8 +52,7 @@ public class Photo implements Serializable {
     public String toString() {
         return "Photo{" +
                 "id=" + id +
-                ", photoLink='" + photoLink + '\'' +
-                ", animal=" + animal +
+                ", photoLink='" + photoLink +
                 '}';
     }
 }

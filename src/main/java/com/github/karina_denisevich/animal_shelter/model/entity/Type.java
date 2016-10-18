@@ -75,7 +75,6 @@ public class Type implements Serializable {
         return "Type{" +
                 "id=" + id +
                 ", type=" + type +
-                ", animals=" + animals +
                 '}';
     }
 }

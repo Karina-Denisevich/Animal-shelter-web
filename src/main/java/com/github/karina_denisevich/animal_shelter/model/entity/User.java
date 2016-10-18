@@ -166,8 +166,6 @@ public class User implements Serializable {
                 ", city='" + city + '\'' +
                 ", phoneNumber='" + phoneNumber + '\'' +
                 ", enabled=" + enabled +
-                ", animals=" + animals +
-                ", role=" + role +
                 '}';
     }
 }

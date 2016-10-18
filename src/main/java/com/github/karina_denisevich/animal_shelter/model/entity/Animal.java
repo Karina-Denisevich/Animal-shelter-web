@@ -135,9 +135,6 @@ public class Animal implements Serializable {
                 ", name='" + name + '\'' +
                 ", gender=" + gender +
                 ", info='" + info + '\'' +
-                ", type=" + type +
-                ", photos=" + photos +
-                ", user=" + user +
                 '}';
     }
 }

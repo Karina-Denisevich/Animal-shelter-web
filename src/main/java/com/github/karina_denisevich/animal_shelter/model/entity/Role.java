@@ -56,7 +56,6 @@ public class Role implements Serializable {
         return "Role{" +
                 "id=" + id +
                 ", role=" + role +
-                ", users=" + users +
                 '}';
     }
 }
