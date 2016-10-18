@@ -127,4 +127,17 @@ public class Animal implements Serializable {
         result = 31 * result + (gender != null ? gender.hashCode() : 0);
         return result;
     }
+
+    @Override
+    public String toString() {
+        return "Animal{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", gender=" + gender +
+                ", info='" + info + '\'' +
+                ", type=" + type +
+                ", photos=" + photos +
+                ", user=" + user +
+                '}';
+    }
 }

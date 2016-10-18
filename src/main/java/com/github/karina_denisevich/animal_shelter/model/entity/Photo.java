@@ -47,4 +47,13 @@ public class Photo implements Serializable {
     public void setAnimal(Animal animal) {
         this.animal = animal;
     }
+
+    @Override
+    public String toString() {
+        return "Photo{" +
+                "id=" + id +
+                ", photoLink='" + photoLink + '\'' +
+                ", animal=" + animal +
+                '}';
+    }
 }
