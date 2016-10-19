@@ -17,7 +17,7 @@ public class User implements Serializable {
     @Column(name = "id", unique = true, nullable = false)
     private long id;
 
-    @Column(name = "login", nullable = false)
+    @Column(name = "login", unique = true, nullable = false)
     private String login;
 
     @Column(name = "email", unique = true, nullable = false)

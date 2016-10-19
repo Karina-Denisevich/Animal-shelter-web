@@ -2,6 +2,7 @@ package com.github.karina_denisevich.animal_shelter.beans;
 
 import com.github.karina_denisevich.animal_shelter.model.entity.Animal;
 import com.github.karina_denisevich.animal_shelter.service.AnimalService;
+import com.github.karina_denisevich.animal_shelter.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;

@@ -30,6 +30,7 @@ import java.util.*;
 @Scope("request")
 public class PhotoBean {
 
+    public static final String PATH_TO_PHOTO = "D:\\Users\\Karina\\Desktop\\AnimalShelter\\photos\\";
     private Part file;
     private String fileContent;
     private User user;
@@ -49,7 +50,7 @@ public class PhotoBean {
     public void upload() {
         user = userService.findUserByLogin(userBean.getCurrentUserName());
         if (file != null) {
-            String prefix = getFolderName();
+            String prefix = getFolderName(userBean.getCurrentUserName());
             try {
                 fileContent = new Scanner(file.getInputStream()).useDelimiter("\\A").next();
                 InputStream input = file.getInputStream();
@@ -66,12 +67,12 @@ public class PhotoBean {
     }
 
     private File getTargetDirectory() {
-        String parent = "D:\\Users\\Karina\\Desktop\\AnimalShelter\\photos\\";
-        File dir = new File(parent + getFolderName());
+
+        File dir = new File(PATH_TO_PHOTO + getFolderName(userBean.getCurrentUserName()));
 
         if (!dir.exists()) {
             try {
-                Files.createDirectory(Paths.get(parent + getFolderName()));
+                Files.createDirectory(Paths.get(PATH_TO_PHOTO + getFolderName(userBean.getCurrentUserName())));
             } catch (IOException e) {
                 e.printStackTrace();
             }
@@ -79,8 +80,22 @@ public class PhotoBean {
         return dir;
     }
 
-    private String getFolderName() {
-        return user.getLogin().substring(0, 3);
+    public void deletePhotoFromFileSystem(String link) {
+
+        try {
+            File file = new File(PhotoBean.PATH_TO_PHOTO + getFolderName(link) + "\\" + link);
+            file.deleteOnExit();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    private String getFolderName(String link) {
+        if (link.length() > 2) {
+            return link.substring(0, 3);
+        } else {
+            return "abc";
+        }
     }
 
     public String getFileName() {

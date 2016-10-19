@@ -31,7 +31,17 @@ public class AnimalServiceImpl implements AnimalService {
     }
 
     @Override
+    public void deleteAnimal(Long id) {
+        animalRepository.delete(id);
+    }
+
+    @Override
     public List<Animal> getAllAnimal() {
         return animalRepository.findAll();
+    }
+
+    @Override
+    public List<Animal> getAnimalsByUserId(Long id) {
+        return animalRepository.getAnimalsByUserId(id);
     }
 }

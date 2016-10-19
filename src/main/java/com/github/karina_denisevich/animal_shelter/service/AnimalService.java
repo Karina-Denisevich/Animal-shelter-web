@@ -7,6 +7,12 @@ import java.util.List;
 public interface AnimalService {
 
     Animal getAnimalById(Long id);
+
     Animal saveAnimal(final Animal animal);
+
+    void deleteAnimal(Long id);
+
+    List<Animal> getAnimalsByUserId(Long id);
+
     List<Animal> getAllAnimal();
 }

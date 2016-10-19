@@ -22,6 +22,9 @@ import java.io.Serializable;
 public class AnimalRegistrationBean {
 
     @Autowired
+    AnimalBean animalBean;
+
+    @Autowired
     public UserService userService;
 
     @Autowired
@@ -56,7 +59,7 @@ public class AnimalRegistrationBean {
         animal.setGender(animalModelBean.getGender());
         animal.setType(type);
         animal.setUser(user);
-        // animalService.saveAnimal(animal);
+        animalService.saveAnimal(animal);
         System.out.println("++++++++++++++++");
 
         photoBean.upload();
@@ -64,8 +67,9 @@ public class AnimalRegistrationBean {
             Photo photo = new Photo();
             photo.setAnimal(animal);
             photo.setPhotoLink(photoBean.getFileName());
-            // photoService.savePhoto(photo);
+            photoService.savePhoto(photo);
         }
+        animalBean.setModel(animalService.getAllAnimal());
     }
 
     public void setUserService(UserService userService) {

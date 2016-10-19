@@ -40,8 +40,7 @@ public class PhotoOutputBean implements Serializable {
             return new DefaultStreamedContent();
         } else {
             System.out.println("else");
-            String p = "D:\\Users\\Karina\\Desktop\\AnimalShelter\\photos\\";
-            Path path = Paths.get(p + "image.jpg");
+            Path path = Paths.get(PhotoBean.PATH_TO_PHOTO + "image.jpg");
 
             String id = context.getExternalContext().getRequestParameterMap().get("animal");
             Animal animal = animalService.getAnimalById(Long.valueOf(id));
@@ -49,7 +48,7 @@ public class PhotoOutputBean implements Serializable {
 
             if (photos.size() > 0) {
                 Photo photo = photos.get(0);
-                path = Paths.get(p, photo.getPhotoLink().substring(0, 3) + "\\"
+                path = Paths.get(PhotoBean.PATH_TO_PHOTO, photo.getPhotoLink().substring(0, 3) + "\\"
                         + photo.getPhotoLink());
             }
 
