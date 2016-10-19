@@ -19,13 +19,13 @@ import java.io.Serializable;
 public class RegistrationBean {
 
     @Autowired
-    public UserService userService;
+    UserService userService;
 
     @Autowired
-    public RoleService roleService;
+    RoleService roleService;
 
     @Autowired
-    public UserModelBean userModelBean;
+    UserModelBean userModelBean;
 
     public RegistrationBean() {
     }
@@ -61,5 +61,13 @@ public class RegistrationBean {
 
     public void setUserModelBean(UserModelBean userModelBean) {
         this.userModelBean = userModelBean;
+    }
+
+    public RoleService getRoleService() {
+        return roleService;
+    }
+
+    public void setRoleService(RoleService roleService) {
+        this.roleService = roleService;
     }
 }

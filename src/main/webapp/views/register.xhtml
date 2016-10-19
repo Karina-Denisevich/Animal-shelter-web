@@ -31,6 +31,7 @@
 
                 <f:event listener="#{passwordValidator.validatePassword}" type="postValidate"/>
                 <f:event listener="#{emailValidator.validateEmail}" type="postValidate"/>
+                <f:event listener="#{loginValidator.validateLogin}" type="postValidate"/>
 
                 <h:panelGroup layout="block"
                               class="form-group has-feedback">
