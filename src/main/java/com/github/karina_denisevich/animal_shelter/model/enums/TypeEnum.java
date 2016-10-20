@@ -8,5 +8,6 @@ public enum TypeEnum {
     FISH,
     ANY;
 
-    TypeEnum(){}
+    TypeEnum() {
+    }
 }

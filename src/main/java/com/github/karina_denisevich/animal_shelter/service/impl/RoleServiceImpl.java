@@ -22,7 +22,8 @@ public class RoleServiceImpl implements RoleService {
     }
 
     @Override
-    public void saveRole(final Role role) {roleRepository.saveAndFlush(role);
+    public void saveRole(final Role role) {
+        roleRepository.saveAndFlush(role);
     }
 
     @Transactional(readOnly = true)

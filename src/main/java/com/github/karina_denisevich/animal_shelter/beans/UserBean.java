@@ -30,6 +30,4 @@ public class UserBean implements Serializable {
         }
         return user.getAuthorities().iterator().next().toString();
     }
-
-
 }

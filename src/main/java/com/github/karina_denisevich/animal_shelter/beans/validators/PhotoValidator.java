@@ -8,8 +8,6 @@ import javax.faces.component.UIComponent;
 import javax.faces.context.FacesContext;
 import javax.faces.validator.ValidatorException;
 import javax.servlet.http.Part;
-import java.util.ArrayList;
-import java.util.List;
 
 @Component
 @Scope("request")

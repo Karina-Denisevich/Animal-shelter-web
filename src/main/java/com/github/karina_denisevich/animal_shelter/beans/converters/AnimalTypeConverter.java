@@ -3,7 +3,6 @@ package com.github.karina_denisevich.animal_shelter.beans.converters;
 import com.github.karina_denisevich.animal_shelter.model.entity.Type;
 import com.github.karina_denisevich.animal_shelter.model.enums.TypeEnum;
 import com.github.karina_denisevich.animal_shelter.service.TypeService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
 

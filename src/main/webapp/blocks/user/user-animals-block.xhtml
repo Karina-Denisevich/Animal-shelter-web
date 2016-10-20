@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui">
+
+<ui:composition>
+    <h:form id="form" prependId="false">
+        <p:dataTable id="checkboxDT"
+                     var="element"
+                     value="#{animalOfUserBean.animalsOfUser}"
+                     paginator="true"
+                     rows="4"
+                     paginatorTemplate="{RowsPerPageDropdown} {FirstPageLink}
+                      {PreviousPageLink} {CurrentPageReport} {NextPageLink} {LastPageLink}"
+                     rowsPerPageTemplate="4,8,12"
+                     widgetVar="dataTableWV"
+                     selection="#{animalOfUserBean.selectedAnimals}"
+                     rowKey="#{element.id}">
+
+            <p:column selectionMode="multiple" style="width:40px;text-align:center"/>
+            <p:column headerText="Id" style="width: 40px">
+                <h:outputText value="#{element.id}"/>
+            </p:column>
+            <p:column headerText="Photo">
+                <!--cache to false-->
+                <p:graphicImage width="100" cache="false" value="#{photoOutputBean.photo}"
+                                alt="Image not avilable">
+                    <f:param name="animal" value="#{element.id}"/>
+                </p:graphicImage>
+            </p:column>
+            <p:column headerText="Name">
+                <h:outputText value="#{element.name}"/>
+            </p:column>
+            <p:column headerText="Type">
+                <h:outputText value="#{element.type}"
+                              converter="#{animalTypeConverter}"/>
+            </p:column>
+            <p:column headerText="Gender">
+                <h:outputText value="#{element.gender}"
+                              converter="#{genderConverter}"/>
+            </p:column>
+            <p:column headerText="Info">
+                <h:outputText value="#{element.info}"/>
+            </p:column>
+            <p:column headerText="User" style="width:92px;text-align: center">
+                <p:commandButton update=":form:userDetail"
+                                 oncomplete="PF('userDialog').show()"
+                                 icon="ui-icon-search"
+                                 title="View">
+                    <f:setPropertyActionListener value="#{element}" target="#{animalBean.selectedAnimal}"/>
+                </p:commandButton>
+            </p:column>
+            <f:facet name="footer">
+                <p:commandButton process="checkboxDT"
+                                 icon="ui-icon-search"
+                                 value="Delete"
+                                 action="#{animalOfUserBean.deleteAll}"
+                                 update=":form"/>
+            </f:facet>
+        </p:dataTable>
+
+        <p:dialog header="User Info" widgetVar="userDialog" modal="true"
+                  showEffect="explode" hideEffect="explode" resizable="false">
+            <p:outputPanel id="userDetail" style="text-align:center;">
+                <p:panelGrid columns="2" rendered="#{not empty animalBean.selectedAnimal}">
+                    <h:outputText value="Id:" style="color: #001a35"/>
+                    <h:outputText value="#{animalBean.selectedAnimal.user.id}"/>
+
+                    <h:outputText value="Login:" style="color: #001a35"/>
+                    <h:outputText value="#{animalBean.selectedAnimal.user.login}"/>
+
+                    <h:outputText value="City:" style="color: #001a35"/>
+                    <h:outputText value="#{animalBean.selectedAnimal.user.city}"/>
+
+                    <h:outputText value="Number:" style="color: #001a35"/>
+                    <h:outputText value="#{animalBean.selectedAnimal.user.phoneNumber}"/>
+
+                    <h:outputText value="Email:" style="color: #001a35"/>
+                    <h:outputText value="#{animalBean.selectedAnimal.user.email}"/>
+                </p:panelGrid>
+            </p:outputPanel>
+        </p:dialog>
+    </h:form>
+</ui:composition>
+</html>
