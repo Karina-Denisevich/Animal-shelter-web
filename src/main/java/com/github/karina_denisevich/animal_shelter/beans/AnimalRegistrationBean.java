@@ -9,13 +9,11 @@ import com.github.karina_denisevich.animal_shelter.service.AnimalService;
 import com.github.karina_denisevich.animal_shelter.service.PhotoService;
 import com.github.karina_denisevich.animal_shelter.service.TypeService;
 import com.github.karina_denisevich.animal_shelter.service.UserService;
-import org.primefaces.context.RequestContext;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
 
 import java.io.IOException;
-import java.io.Serializable;
 
 @Component
 @Scope("request")
@@ -69,7 +67,7 @@ public class AnimalRegistrationBean {
             photo.setPhotoLink(photoBean.getFileName());
             photoService.savePhoto(photo);
         }
-        animalBean.setModel(animalService.getAllAnimal());
+        animalBean.setModel(animalService.getAllAnimals());
     }
 
     public void setUserService(UserService userService) {

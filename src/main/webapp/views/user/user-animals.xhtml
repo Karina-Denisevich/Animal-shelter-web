@@ -27,10 +27,6 @@
         <ui:include src="../../blocks/user/user-header.xhtml"/>
     </ui:insert>
 
-    <f:metadata>
-        <f:viewParam id="name1" name="name1" value="Karina"/>
-    </f:metadata>
-
     <h:form>
         <h:inputText value="User"/>
     </h:form>
@@ -86,9 +82,7 @@
                                  icon="ui-icon-search"
                                  value="Delete"
                                  action="#{animalOfUserBean.deleteAll}"
-                                 update=":form"
-
-                />
+                                 update=":form"/>
             </f:facet>
         </p:dataTable>
 
@@ -113,16 +107,6 @@
                 </p:panelGrid>
             </p:outputPanel>
         </p:dialog>
-
-        <p:dialog header="Selected Animals" widgetVar="multiAnimalDialog" modal="true" showEffect="fade"
-                  hideEffect="fade" resizable="false" width="200">
-            <p:outputPanel id="multiAnimalDetail" style="text-align:center;">
-                <ui:repeat value="#{animalOfUserBean.selectedAnimals}" var="car">
-                    <h:outputText value="#{car.id} - #{car.name}" style="display:block"/>
-                </ui:repeat>
-            </p:outputPanel>
-        </p:dialog>
-
     </h:form>
 
     <h:panelGroup layout="block" id="footer">

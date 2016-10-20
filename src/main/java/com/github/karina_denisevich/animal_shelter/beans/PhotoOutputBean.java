@@ -62,12 +62,10 @@ public class PhotoOutputBean implements Serializable {
     }
 
     public List<Animal> getAnimalList() {
-        return animalService.getAllAnimal();
+        return animalService.getAllAnimals();
     }
 
     public void setAnimalList(List<Animal> animalList) {
         this.animalList = animalList;
     }
-
-    private Animal animal;
 }

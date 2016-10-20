@@ -1,8 +1,8 @@
 package com.github.karina_denisevich.animal_shelter.beans;
 
 import com.github.karina_denisevich.animal_shelter.model.entity.Animal;
-import com.github.karina_denisevich.animal_shelter.model.entity.Photo;
 import com.github.karina_denisevich.animal_shelter.model.entity.User;
+import com.github.karina_denisevich.animal_shelter.model.enums.RoleEnum;
 import com.github.karina_denisevich.animal_shelter.service.AnimalService;
 import com.github.karina_denisevich.animal_shelter.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,6 +21,7 @@ public class AnimalOfUserBean implements Serializable {
     private static final long serialVersionUID = 1L;
 
     private List<Animal> animalsOfUser;
+    private List<Animal> animalsOfAdmin;
     private List<Animal> selectedAnimals;
 
     @Autowired
@@ -39,18 +40,29 @@ public class AnimalOfUserBean implements Serializable {
     public void init() {
         User user = userService.findUserByLogin(userBean.getCurrentUserName());
         animalsOfUser = animalService.getAnimalsByUserId(user.getId());
+        animalsOfAdmin = animalService.getAllAnimals();
     }
 
     public void deleteAll() {
         for (Animal animal : selectedAnimals) {
-            for (Photo photo : animal.getPhotos()) {
-                if (!Objects.equals(photo.getPhotoLink(), "image.jpg")) {
-                    photoBean.deletePhotoFromFileSystem(photo.getPhotoLink());
-                }
-            }
+            animal.getPhotos().stream().filter(photo -> !Objects.equals(photo.getPhotoLink(), "image.jpg")).forEach(photo -> {
+                photoBean.deletePhotoFromFileSystem(photo.getPhotoLink());
+            });
             animalService.deleteAnimal(animal.getId());
-            animalsOfUser.remove(animal);
+            if (Objects.equals(userBean.getCurrentUserRole(), RoleEnum.ROLE_USER.toString())) {
+                animalsOfUser.remove(animal);
+            } else {
+                animalsOfAdmin.remove(animal);
+            }
         }
+    }
+
+    public List<Animal> getAnimalsOfAdmin() {
+        return animalsOfAdmin;
+    }
+
+    public void setAnimalsOfAdmin(List<Animal> animalsOfAdmin) {
+        this.animalsOfAdmin = animalsOfAdmin;
     }
 
     public List<Animal> getAnimalsOfUser() {
