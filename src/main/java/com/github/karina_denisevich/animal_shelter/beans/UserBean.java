@@ -11,18 +11,25 @@ import java.io.Serializable;
 @Scope("session")
 public class UserBean implements Serializable {
 
+    private static final long serialVersionUID = 1L;
+
     public String getCurrentUserName() {
-        User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        User user
+                = (org.springframework.security.core.userdetails.User) SecurityContextHolder
+                .getContext().getAuthentication().getPrincipal();
         return user.getUsername();
     }
 
     public String getCurrentUserRole() {
         User user;
         try {
-            user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+            user = (org.springframework.security.core.userdetails.User) SecurityContextHolder
+                    .getContext().getAuthentication().getPrincipal();
         } catch (Exception ex) {
             return "ROLE_ANONYMOUS";
         }
         return user.getAuthorities().iterator().next().toString();
     }
+
+
 }
