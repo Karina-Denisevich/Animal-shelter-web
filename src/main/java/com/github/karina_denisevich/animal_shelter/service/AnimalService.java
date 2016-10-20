@@ -14,5 +14,5 @@ public interface AnimalService {
 
     List<Animal> getAnimalsByUserId(Long id);
 
-    List<Animal> getAllAnimal();
+    List<Animal> getAllAnimals();
 }

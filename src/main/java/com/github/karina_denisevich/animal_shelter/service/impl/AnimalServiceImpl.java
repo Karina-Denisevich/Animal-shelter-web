@@ -20,14 +20,15 @@ public class AnimalServiceImpl implements AnimalService {
         this.animalRepository = animalRepository;
     }
 
-
+    @Transactional(readOnly = true)
     @Override
     public Animal getAnimalById(Long id) {
         return animalRepository.getOne(id);
     }
 
     @Override
-    public Animal saveAnimal(final Animal animal) {return animalRepository.save(animal);
+    public Animal saveAnimal(final Animal animal) {
+        return animalRepository.save(animal);
     }
 
     @Override
@@ -35,11 +36,13 @@ public class AnimalServiceImpl implements AnimalService {
         animalRepository.delete(id);
     }
 
+    @Transactional(readOnly = true)
     @Override
-    public List<Animal> getAllAnimal() {
+    public List<Animal> getAllAnimals() {
         return animalRepository.findAll();
     }
 
+    @Transactional(readOnly = true)
     @Override
     public List<Animal> getAnimalsByUserId(Long id) {
         return animalRepository.getAnimalsByUserId(id);
