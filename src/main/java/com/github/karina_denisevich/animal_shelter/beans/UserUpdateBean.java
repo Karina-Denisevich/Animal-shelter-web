@@ -29,16 +29,11 @@ public class UserUpdateBean implements Serializable {
     public void updateUser() {
         if (!oldUser.equals(userToUpdate)
                 || (!password.isEmpty() && !new BCryptPasswordEncoder().matches(password, oldUser.getPassword()))) {
-            System.out.println("+++++++   Update1");
             if (!password.isEmpty() && !new BCryptPasswordEncoder().matches(password, oldUser.getPassword())) {
                 userToUpdate.setPassword(password);
-                System.out.println("+++++++   Update");
-               // userInfoBean.getUserList().set(userInfoBean.getUserList().indexOf(oldUser), userToUpdate);
             }
             userService.updateUser(userToUpdate);
             userInfoBean.getUserList().set(userInfoBean.getUserList().indexOf(oldUser), userToUpdate);
-        } else {
-            System.out.println("+++++++   NotUpdate");
         }
     }
 

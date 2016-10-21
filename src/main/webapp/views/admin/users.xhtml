@@ -75,14 +75,14 @@
                 <p:commandButton update="userDetail"
                                  action="#{userUpdateBean.setOldUser(element)}"
                                  oncomplete="PF('userDialog').show()"
-                                 icon="ui-icon-search"
+                                 icon="ui-icon-update"
                                  title="View">
                     <f:setPropertyActionListener value="#{element}" target="#{userInfoBean.oneUser}"/>
                 </p:commandButton>
             </p:column>
             <f:facet name="footer">
                 <p:commandButton process="checkboxDT"
-                                 icon="ui-icon-search"
+                                 icon="ui-icon-delete"
                                  value="Delete"
                                  action="#{userInfoBean.deleteAll}"
                                  update=":form"/>

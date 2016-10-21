@@ -4,6 +4,7 @@ import com.github.karina_denisevich.animal_shelter.model.entity.Animal;
 import com.github.karina_denisevich.animal_shelter.model.entity.Role;
 import com.github.karina_denisevich.animal_shelter.model.entity.Type;
 import com.github.karina_denisevich.animal_shelter.model.entity.User;
+import com.github.karina_denisevich.animal_shelter.model.enums.RoleEnum;
 import com.github.karina_denisevich.animal_shelter.service.AnimalService;
 import com.github.karina_denisevich.animal_shelter.service.RoleService;
 import com.github.karina_denisevich.animal_shelter.service.TypeService;
@@ -46,7 +47,16 @@ public class UserServiceTest {
 
     @Test
     public void testSave() throws Exception {
-
+//        Role role = roleService.findRole(RoleEnum.ROLE_ADMIN);
+//        User user = new User();
+//        user.setEnabled(true);
+//        user.setCity("Hrodna");
+//        user.setPassword("9999");
+//        user.setLogin("Vera");
+//        user.setPhoneNumber("+375299999999");
+//        user.setEmail("Vera@mail.ru");
+//        user.setRole(role);
+//        userService.saveUser(user);
     }
 }
 

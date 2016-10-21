@@ -47,7 +47,7 @@ public class User implements Serializable {
         copy.setId(user.getId());
         copy.setLogin(user.getLogin());
         copy.setEmail(user.getEmail());
-        copy.setPassword(user.getPassword());
+        copy.password = user.getPassword();
         copy.setPhoneNumber(user.getPhoneNumber());
         copy.setCity(user.getCity());
         copy.setEnabled(user.getEnabled());
