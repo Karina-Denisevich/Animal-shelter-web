@@ -29,7 +29,7 @@ public class LoginValidator {
         this.userService = userService;
     }
 
-    public void validateEmail(ComponentSystemEvent event) {
+    public void validateLogin(ComponentSystemEvent event) {
         UIComponent components = event.getComponent();
 
         // get password
