@@ -71,6 +71,15 @@
                     <f:setPropertyActionListener value="#{element}" target="#{userInfoBean.oneUser}"/>
                 </p:commandButton>
             </p:column>
+            <p:column headerText="User" style="width:92px;text-align: center">
+                <p:commandButton update="userDetail"
+                                 action="#{userUpdateBean.setOldUser(element)}"
+                                 oncomplete="PF('userDialog').show()"
+                                 icon="ui-icon-search"
+                                 title="View">
+                    <f:setPropertyActionListener value="#{element}" target="#{userInfoBean.oneUser}"/>
+                </p:commandButton>
+            </p:column>
             <f:facet name="footer">
                 <p:commandButton process="checkboxDT"
                                  icon="ui-icon-search"
@@ -86,6 +95,20 @@
                 <ui:repeat value="#{userInfoBean.oneUser.animals}" var="animal">
                     <h:outputText value="#{animal.id} - #{animal.name}" style="display:block"/>
                 </ui:repeat>
+            </p:outputPanel>
+        </p:dialog>
+
+    </h:form>
+
+    <h:form prependId="false" id="detail">
+        <p:dialog header="User Info" widgetVar="userDialog" modal="true"
+                  showEffect="explode" hideEffect="explode" resizable="false">
+            <p:outputPanel id="userDetail" style="text-align:center;">
+                <ui:insert>
+                    <ui:include src="../../blocks/admin/user-info.xhtml">
+                        <ui:param name="updateForm" value=":form"/>
+                    </ui:include>
+                </ui:insert>
             </p:outputPanel>
         </p:dialog>
     </h:form>

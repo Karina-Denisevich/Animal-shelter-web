@@ -42,26 +42,22 @@ public class User implements Serializable {
     @JoinColumn(name = "role_id")
     private Role role;
 
+    public User copyUser(User user) {
+        User copy = new User();
+        copy.setId(user.getId());
+        copy.setLogin(user.getLogin());
+        copy.setEmail(user.getEmail());
+        copy.setPassword(user.getPassword());
+        copy.setPhoneNumber(user.getPhoneNumber());
+        copy.setCity(user.getCity());
+        copy.setEnabled(user.getEnabled());
+        copy.setRole(user.getRole());
+        copy.setAnimals(user.getAnimals());
+
+        return copy;
+    }
+
     public User() {
-    }
-
-    public User(String login, String password, boolean enabled, Role role) {
-        this.login = login;
-        this.password = new BCryptPasswordEncoder().encode(password);
-        this.enabled = enabled;
-        this.role = role;
-    }
-
-    public User(String login, String email, String password, String city, String phoneNumber,
-                boolean enabled, Collection<Animal> animals, Role role) {
-        this.login = login;
-        this.email = email;
-        this.password = new BCryptPasswordEncoder().encode(password);
-        this.city = city;
-        this.phoneNumber = phoneNumber;
-        this.enabled = enabled;
-        this.animals = animals;
-        this.role = role;
     }
 
     public long getId() {
@@ -120,6 +116,10 @@ public class User implements Serializable {
         this.enabled = enabled;
     }
 
+    public boolean getEnabled() {
+        return enabled;
+    }
+
     public Collection<Animal> getAnimals() {
         return animals;
     }
@@ -136,6 +136,7 @@ public class User implements Serializable {
         this.role = role;
     }
 
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -144,15 +145,22 @@ public class User implements Serializable {
         User user = (User) o;
 
         if (id != user.id) return false;
+        if (enabled != user.enabled) return false;
         if (!login.equals(user.login)) return false;
-        return email != null ? email.equals(user.email) : user.email == null;
+        if (!email.equals(user.email)) return false;
+        if (city != null ? !city.equals(user.city) : user.city != null) return false;
+        if (phoneNumber != null ? !phoneNumber.equals(user.phoneNumber) : user.phoneNumber != null) return false;
+        if (animals != null ? !animals.equals(user.animals) : user.animals != null) return false;
+        return role.equals(user.role);
+
     }
 
     @Override
     public int hashCode() {
         int result = (int) (id ^ (id >>> 32));
         result = 31 * result + login.hashCode();
-        result = 31 * result + (email != null ? email.hashCode() : 0);
+        result = 31 * result + email.hashCode();
+        result = 31 * result + password.hashCode();
         return result;
     }
 
