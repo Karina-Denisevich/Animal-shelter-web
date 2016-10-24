@@ -44,16 +44,19 @@ public class AnimalOfUserBean implements Serializable {
     }
 
     public void deleteAll() {
-        for (Animal animal : selectedAnimals) {
-            animal.getPhotos().stream().filter(photo -> !Objects.equals(photo.getPhotoLink(), "image.jpg")).forEach(photo -> {
-                photoBean.deletePhotoFromFileSystem(photo.getPhotoLink());
-            });
-            animalService.deleteAnimal(animal.getId());
-            if (Objects.equals(userBean.getCurrentUserRole(), RoleEnum.ROLE_USER.toString())) {
-                animalsOfUser.remove(animal);
-            } else {
-                animalsOfAdmin.remove(animal);
-            }
+        selectedAnimals.forEach(this::deleteAnimal);
+    }
+
+    public void deleteAnimal(Animal animal) {
+        animal.getPhotos().stream().filter(photo -> !Objects.equals(photo.getPhotoLink(), "image.jpg")).forEach(photo -> {
+
+            photoBean.deletePhotoFromFileSystem(photo.getPhotoLink());
+        });
+        animalService.deleteAnimal(animal.getId());
+        if (Objects.equals(userBean.getCurrentUserRole(), RoleEnum.ROLE_USER.toString())) {
+            animalsOfUser.remove(animal);
+        } else {
+            animalsOfAdmin.remove(animal);
         }
     }
 

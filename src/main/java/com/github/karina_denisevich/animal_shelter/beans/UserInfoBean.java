@@ -36,11 +36,10 @@ public class UserInfoBean implements Serializable {
     public void deleteAll() {
         for (User user : selectedUsers) {
             for (Animal animal : user.getAnimals()) {
-                //animalOfUserBean.deleteAnimal(animal);
-                System.out.println("Animal");
+                animalOfUserBean.deleteAnimal(animal);
             }
-            System.out.println("User");
-            // userService.delete(user.getId());
+            userList.remove(user);
+            userService.delete(user.getId());
         }
     }
 

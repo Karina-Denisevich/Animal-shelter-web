@@ -42,7 +42,7 @@ public class RegistrationBean {
         user.setRole(role);
         user.setEnabled(enabled);
 
-        //userService.saveUser(user);
+        userService.saveUser(user);
     }
 
     public UserService getUserService() {

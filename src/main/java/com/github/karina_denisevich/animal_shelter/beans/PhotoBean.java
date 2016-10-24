@@ -73,6 +73,7 @@ public class PhotoBean {
     public void deletePhotoFromFileSystem(String link) {
 
         try {
+            System.out.println("^^^^^^^^^^^^^^^ " + link);
             File file = new File(PhotoBean.PATH_TO_PHOTO + getFolderName(link) + "\\" + link);
             file.deleteOnExit();
         } catch (Exception e) {

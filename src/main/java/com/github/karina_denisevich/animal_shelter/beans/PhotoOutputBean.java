@@ -6,6 +6,7 @@ import com.github.karina_denisevich.animal_shelter.service.AnimalService;
 import org.primefaces.model.DefaultStreamedContent;
 import org.primefaces.model.StreamedContent;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
 
 import javax.faces.bean.SessionScoped;
@@ -20,7 +21,7 @@ import java.nio.file.Paths;
 import java.util.List;
 
 @Component
-@SessionScoped
+@Scope("session")
 public class PhotoOutputBean implements Serializable {
 
     private static final long serialVersionUID = 1L;
