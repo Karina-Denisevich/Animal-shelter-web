@@ -1,6 +1,7 @@
 package com.github.karina_denisevich.animal_shelter.beans;
 
 import com.github.karina_denisevich.animal_shelter.model.entity.User;
+import com.github.karina_denisevich.animal_shelter.model.enums.RoleEnum;
 import com.github.karina_denisevich.animal_shelter.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
@@ -8,6 +9,8 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Component;
 
 import java.io.Serializable;
+import java.util.LinkedHashMap;
+import java.util.Map;
 
 @Component
 @Scope("session")

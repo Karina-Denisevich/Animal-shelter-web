@@ -10,7 +10,7 @@
 
 <ui:composition>
 
-    <h:form prependId="false" id="reg-form">
+    <h:form prependId="false" id="update-form">
 
         <f:event listener="#{passwordValidator.validatePassword}" type="postValidate"/>
 
@@ -25,6 +25,13 @@
                          requiredMessage="Input login!"/>
             <h:message for="login" style="color: red"/>
             <span class="glyphicon glyphicon-user form-control-feedback"/>
+        </h:panelGroup>
+
+        <h:panelGroup layout="block" style="text-align: left" class="form-group has-feedback">
+            <h:selectOneMenu  class="form-control" value="#{userUpdateBean.userToUpdate.role}"
+                             converter="#{roleConverter}">
+                <f:selectItems value="#{roleBean.roleMap}"/>
+            </h:selectOneMenu>
         </h:panelGroup>
 
         <h:panelGroup layout="block"
@@ -54,7 +61,6 @@
                 <f:validateRegex pattern="(\+375(\d){9})"/>
             </h:inputText>
             <h:message for="phone" style="color: red"/>
-            <span class="glyphicon glyphicon-envelope form-control-feedback"/>
         </h:panelGroup>
 
         <h:panelGroup layout="block" class="form-group has-feedback">
@@ -62,7 +68,6 @@
                          class="form-control"
                          a:placeholder="City"
                          value="#{userUpdateBean.userToUpdate.city}"/>
-            <span class="glyphicon glyphicon-envelope form-control-feedback"/>
         </h:panelGroup>
 
         <h:panelGroup layout="block" class="form-group has-feedback">
@@ -85,12 +90,11 @@
 
         <h:panelGroup layout="block" class="col-xs-4 col-xs-offset-8">
             <p:commandButton value="Update"
-                             process="reg-form"
+                             process="update-form"
                              action="#{userUpdateBean.updateUser()}"
                              oncomplete="PF('userDialog').hide()"
-                             update="#{updateForm}"
                              class="btn btn-primary btn-block btn-flat">
-                <f:ajax execute="reg-form" render="reg-form"/>
+                <f:ajax execute="update-form" render="update-form"/>
             </p:commandButton>
         </h:panelGroup>
     </h:form>
