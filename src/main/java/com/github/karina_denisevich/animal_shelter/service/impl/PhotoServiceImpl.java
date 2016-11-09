@@ -8,7 +8,6 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 @Service
-@Transactional
 public class PhotoServiceImpl implements PhotoService {
 
     private final PhotoRepository photoRepository;
@@ -19,6 +18,7 @@ public class PhotoServiceImpl implements PhotoService {
     }
 
     @Override
+    @Transactional
     public Photo savePhoto(Photo photo) {
         return photoRepository.saveAndFlush(photo);
     }

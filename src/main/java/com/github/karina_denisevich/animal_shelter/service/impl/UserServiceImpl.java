@@ -10,7 +10,6 @@ import org.springframework.transaction.annotation.Transactional;
 import java.util.List;
 
 @Service
-@Transactional
 public class UserServiceImpl implements UserService {
 
     private final UserRepository userRepository;
@@ -21,29 +20,28 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
+    @Transactional
     public void saveUser(final User user) {
         userRepository.saveAndFlush(user);
     }
 
-    @Transactional(readOnly = true)
     @Override
     public User findUserByLogin(final String login) {
         return userRepository.findUserByLogin(login);
     }
 
-    @Transactional(readOnly = true)
     @Override
     public User findUserByEmail(String email) {
         return userRepository.findUserByEmail(email);
     }
 
-    @Transactional(readOnly = true)
     @Override
     public List<User> getAllUsers() {
         return userRepository.findAll();
     }
 
     @Override
+    @Transactional
     public void updateUser(User user) {
         userRepository.saveAndFlush(user);
     }

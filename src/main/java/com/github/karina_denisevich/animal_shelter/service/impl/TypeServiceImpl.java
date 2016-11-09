@@ -11,7 +11,6 @@ import org.springframework.transaction.annotation.Transactional;
 import java.util.List;
 
 @Service
-@Transactional
 public class TypeServiceImpl implements TypeService {
 
     private final TypeRepository typeRepository;
@@ -22,17 +21,16 @@ public class TypeServiceImpl implements TypeService {
     }
 
     @Override
+    @Transactional
     public void saveType(final Type type) {
         typeRepository.save(type);
     }
 
-    @Transactional(readOnly = true)
     @Override
     public Type findType(final TypeEnum type) {
         return typeRepository.findType(type);
     }
 
-    @Transactional(readOnly = true)
     @Override
     public List<Type> getAll() {
         return typeRepository.findAll();

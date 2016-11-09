@@ -11,7 +11,6 @@ import org.springframework.transaction.annotation.Transactional;
 import java.util.List;
 
 @Service
-@Transactional
 public class RoleServiceImpl implements RoleService {
 
     private final RoleRepository roleRepository;
@@ -22,11 +21,11 @@ public class RoleServiceImpl implements RoleService {
     }
 
     @Override
+    @Transactional
     public void saveRole(final Role role) {
         roleRepository.saveAndFlush(role);
     }
 
-    @Transactional(readOnly = true)
     @Override
     public Role findRole(final RoleEnum roleEnum) {
         return roleRepository.findRole(roleEnum);
@@ -38,6 +37,7 @@ public class RoleServiceImpl implements RoleService {
     }
 
     @Override
+    @Transactional
     public void delete(long id) {
         roleRepository.delete(id);
     }

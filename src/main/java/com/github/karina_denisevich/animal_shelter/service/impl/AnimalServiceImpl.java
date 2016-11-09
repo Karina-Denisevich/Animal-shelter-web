@@ -10,7 +10,6 @@ import org.springframework.transaction.annotation.Transactional;
 import java.util.List;
 
 @Service
-@Transactional
 public class AnimalServiceImpl implements AnimalService {
 
     private final AnimalRepository animalRepository;
@@ -20,29 +19,28 @@ public class AnimalServiceImpl implements AnimalService {
         this.animalRepository = animalRepository;
     }
 
-    @Transactional(readOnly = true)
     @Override
     public Animal getAnimalById(Long id) {
         return animalRepository.getOne(id);
     }
 
     @Override
+    @Transactional
     public Animal saveAnimal(final Animal animal) {
         return animalRepository.save(animal);
     }
 
     @Override
+    @Transactional
     public void deleteAnimal(Long id) {
         animalRepository.delete(id);
     }
 
-    @Transactional(readOnly = true)
     @Override
     public List<Animal> getAllAnimals() {
         return animalRepository.findAll();
     }
 
-    @Transactional(readOnly = true)
     @Override
     public List<Animal> getAnimalsByUserId(Long id) {
         return animalRepository.getAnimalsByUserId(id);
