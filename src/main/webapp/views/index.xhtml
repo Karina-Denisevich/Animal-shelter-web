@@ -27,21 +27,16 @@
         <ui:include src="../blocks/header.xhtml"/>
     </ui:insert>
 
-    <f:metadata>
-        <f:viewParam id="name1" name="name1" value="Karina"/>
-    </f:metadata>
-
-    <h:form>
-        <h:inputText value="Anon"/>
-    </h:form>
-
-
     <h:panelGroup layout="block" styleClass="jumbotron">
         <h:panelGroup layout="block" styleClass="container">
             <h1>Animal Shelter</h1>
         </h:panelGroup>
     </h:panelGroup>
 
+
+    <ui:insert name="header2">
+        <ui:include src="../blocks/find-animal.xhtml"/>
+    </ui:insert>
 
     <h:form id="form" prependId="false">
         <p:dataTable var="element"

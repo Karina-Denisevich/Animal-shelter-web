@@ -27,9 +27,15 @@
         <ui:include src="../../blocks/admin/admin-header.xhtml"/>
     </ui:insert>
 
-    <h:form>
-        <h:inputText value="Admin"/>
-    </h:form>
+    <h:panelGroup layout="block" styleClass="jumbotron">
+        <h:panelGroup layout="block" styleClass="container">
+            <h1>Animal Shelter</h1>
+        </h:panelGroup>
+    </h:panelGroup>
+
+    <ui:insert name="header2">
+        <ui:include src="../../blocks/find-animal.xhtml"/>
+    </ui:insert>
 
     <h:form id="form" prependId="false">
         <p:dataTable id="checkboxDT"
