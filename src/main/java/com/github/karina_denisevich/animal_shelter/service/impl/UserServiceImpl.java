@@ -26,11 +26,11 @@ public class UserServiceImpl implements UserService {
     @Override
     @Transactional
     public void saveUser(final User user) {
-       // sendEmail(user.getEmail());
+        // sendEmail(user.getEmail());
         userRepository.saveAndFlush(user);
     }
 
-    private void sendEmail(String email){
+    private void sendEmail(String email) {
         Properties props = new Properties();
         props.put("mail.smtp.host", "smtp.gmail.com");
         props.put("mail.smtp.socketFactory.port", "465");
@@ -43,12 +43,11 @@ public class UserServiceImpl implements UserService {
         Session session = Session.getDefaultInstance(props,
                 new javax.mail.Authenticator() {
                     protected PasswordAuthentication getPasswordAuthentication() {
-                        return new PasswordAuthentication("denisevichks97@gmail.com","password");
+                        return new PasswordAuthentication("denisevichks97@gmail.com", "password");
                     }
                 });
 
         try {
-
             Message message = new MimeMessage(session);
             message.setFrom(new InternetAddress("denisevichks97@gmail.com"));
             message.setRecipients(Message.RecipientType.TO,

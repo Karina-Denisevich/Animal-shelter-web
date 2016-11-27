@@ -1,7 +1,6 @@
 package com.github.karina_denisevich.animal_shelter.beans;
 
 import com.github.karina_denisevich.animal_shelter.model.entity.User;
-import com.github.karina_denisevich.animal_shelter.model.enums.RoleEnum;
 import com.github.karina_denisevich.animal_shelter.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
@@ -9,8 +8,6 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Component;
 
 import java.io.Serializable;
-import java.util.LinkedHashMap;
-import java.util.Map;
 
 @Component
 @Scope("session")
@@ -19,10 +16,10 @@ public class UserUpdateBean implements Serializable {
     private static final long serialVersionUID = 1L;
 
     @Autowired
-    UserService userService;
+    private UserService userService;
 
     @Autowired
-    UserInfoBean userInfoBean;
+    private UserInfoBean userInfoBean;
 
     private User userToUpdate;
     private User oldUser;
@@ -54,7 +51,6 @@ public class UserUpdateBean implements Serializable {
     public void setOldUser(User oldUser) {
         this.oldUser = oldUser;
         userToUpdate = new User().copyUser(oldUser);
-        System.out.println("))))))))))))))))))))))))))");
     }
 
     public String getPassword() {

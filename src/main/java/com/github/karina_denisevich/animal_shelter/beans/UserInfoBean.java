@@ -8,7 +8,6 @@ import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
 
 import javax.annotation.PostConstruct;
-import javax.faces.bean.SessionScoped;
 import java.io.Serializable;
 import java.util.List;
 
@@ -19,10 +18,10 @@ public class UserInfoBean implements Serializable {
     private static final long serialVersionUID = 1L;
 
     @Autowired
-    UserService userService;
+    private UserService userService;
 
     @Autowired
-    AnimalOfUserBean animalOfUserBean;
+    private AnimalOfUserBean animalOfUserBean;
 
     private List<User> userList;
     private List<User> selectedUsers;

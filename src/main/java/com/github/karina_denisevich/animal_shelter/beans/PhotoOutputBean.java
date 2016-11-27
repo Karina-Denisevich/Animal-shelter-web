@@ -9,7 +9,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
 
-import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
 import javax.faces.event.PhaseId;
 import java.io.ByteArrayInputStream;
@@ -27,7 +26,7 @@ public class PhotoOutputBean implements Serializable {
     private static final long serialVersionUID = 1L;
 
     @Autowired
-    AnimalService animalService;
+    private AnimalService animalService;
 
     private StreamedContent photo;
     private List<Animal> animalList;
@@ -37,10 +36,8 @@ public class PhotoOutputBean implements Serializable {
         FacesContext context = FacesContext.getCurrentInstance();
 
         if (context.getCurrentPhaseId() == PhaseId.RENDER_RESPONSE) {
-            System.out.println("if");
             return new DefaultStreamedContent();
         } else {
-            System.out.println("else");
             Path path = Paths.get(PhotoBean.PATH_TO_PHOTO + "image.jpg");
 
             String id = context.getExternalContext().getRequestParameterMap().get("animal");
@@ -52,7 +49,6 @@ public class PhotoOutputBean implements Serializable {
                 path = Paths.get(PhotoBean.PATH_TO_PHOTO, photo.getPhotoLink().substring(0, 3) + "\\"
                         + photo.getPhotoLink());
             }
-
             return new DefaultStreamedContent(
                     new ByteArrayInputStream(Files.readAllBytes(path)));
         }

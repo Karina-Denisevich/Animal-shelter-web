@@ -27,10 +27,10 @@ public class PhotoBean {
     private String fileName;
 
     @Autowired
-    UserService userService;
+    private UserService userService;
 
     @Autowired
-    UserBean userBean;
+    private UserBean userBean;
 
     @PostConstruct
     public void init() {
@@ -71,9 +71,7 @@ public class PhotoBean {
     }
 
     public void deletePhotoFromFileSystem(String link) {
-
         try {
-            System.out.println("^^^^^^^^^^^^^^^ " + link);
             File file = new File(PhotoBean.PATH_TO_PHOTO + getFolderName(link) + "\\" + link);
             file.deleteOnExit();
         } catch (Exception e) {

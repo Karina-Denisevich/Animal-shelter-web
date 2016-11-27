@@ -17,13 +17,13 @@ import java.io.IOException;
 public class RegistrationBean {
 
     @Autowired
-    UserService userService;
+    private UserService userService;
 
     @Autowired
-    RoleService roleService;
+    private RoleService roleService;
 
     @Autowired
-    UserModelBean userModelBean;
+    private UserModelBean userModelBean;
 
     public RegistrationBean() {
     }

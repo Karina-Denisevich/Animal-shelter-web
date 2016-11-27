@@ -25,16 +25,16 @@ public class AnimalOfUserBean implements Serializable {
     private List<Animal> selectedAnimals;
 
     @Autowired
-    AnimalService animalService;
+    private AnimalService animalService;
 
     @Autowired
-    PhotoBean photoBean;
+    private PhotoBean photoBean;
 
     @Autowired
-    UserBean userBean;
+    private UserBean userBean;
 
     @Autowired
-    UserService userService;
+    private UserService userService;
 
     @PostConstruct
     public void init() {
@@ -48,10 +48,8 @@ public class AnimalOfUserBean implements Serializable {
     }
 
     public void deleteAnimal(Animal animal) {
-        animal.getPhotos().stream().filter(photo -> !Objects.equals(photo.getPhotoLink(), "image.jpg")).forEach(photo -> {
-
-            photoBean.deletePhotoFromFileSystem(photo.getPhotoLink());
-        });
+        animal.getPhotos().stream().filter(photo -> !Objects.equals(photo.getPhotoLink(), "image.jpg"))
+                .forEach(photo -> photoBean.deletePhotoFromFileSystem(photo.getPhotoLink()));
         animalService.deleteAnimal(animal.getId());
         if (Objects.equals(userBean.getCurrentUserRole(), RoleEnum.ROLE_USER.toString())) {
             animalsOfUser.remove(animal);

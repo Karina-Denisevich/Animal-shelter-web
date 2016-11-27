@@ -14,5 +14,5 @@ public interface AnimalRepository extends JpaRepository<Animal, Long> {
     List<Animal> getAnimalsByUserId(@Param("id") Long id);
 
     @Query("select a from Animal a where a.type = :type")
-    List<Animal> getAnimalsByType(@Param("id") Type type);
+    List<Animal> getAnimalsByType(@Param("type") Type type);
 }

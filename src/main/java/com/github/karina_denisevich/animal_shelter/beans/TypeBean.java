@@ -14,7 +14,7 @@ import java.util.Map;
 public class TypeBean {
 
     @Autowired
-    TypeService typeService;
+    private TypeService typeService;
 
     private Map<String, Object> typesMap;
 

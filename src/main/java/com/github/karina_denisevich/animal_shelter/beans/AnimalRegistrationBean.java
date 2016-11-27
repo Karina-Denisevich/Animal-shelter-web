@@ -26,28 +26,27 @@ public class AnimalRegistrationBean {
     public UserService userService;
 
     @Autowired
-    public AnimalService animalService;
+    private AnimalService animalService;
 
     @Autowired
-    public TypeService typeService;
+    private TypeService typeService;
 
     @Autowired
-    public PhotoService photoService;
+    private PhotoService photoService;
 
     @Autowired
-    AnimalModelBean animalModelBean;
+    private AnimalModelBean animalModelBean;
 
     @Autowired
-    UserBean userBean;
+    private UserBean userBean;
 
     @Autowired
-    PhotoBean photoBean;
+    private PhotoBean photoBean;
 
     public AnimalRegistrationBean() {
     }
 
     public void saveAnimal() throws IOException {
-
         User user = userService.findUserByLogin(userBean.getCurrentUserName());
         Type type = typeService.findType(animalModelBean.getType().getType());
 
@@ -58,7 +57,6 @@ public class AnimalRegistrationBean {
         animal.setType(type);
         animal.setUser(user);
         animalService.saveAnimal(animal);
-        System.out.println("++++++++++++++++");
 
         photoBean.upload();
         if (!(photoBean.getFileName() == null || photoBean.getFileName().isEmpty())) {

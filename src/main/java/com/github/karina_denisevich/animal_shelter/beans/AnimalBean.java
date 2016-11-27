@@ -17,7 +17,7 @@ public class AnimalBean implements Serializable {
     private static final long serialVersionUID = 1L;
 
     @Autowired
-    AnimalService animalService;
+    private AnimalService animalService;
 
     private List<Animal> model;
     private Animal selectedAnimal;

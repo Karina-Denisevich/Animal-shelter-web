@@ -14,8 +14,7 @@ public class UserBean implements Serializable {
     private static final long serialVersionUID = 1L;
 
     public String getCurrentUserName() {
-        User user
-                = (org.springframework.security.core.userdetails.User) SecurityContextHolder
+        User user = (org.springframework.security.core.userdetails.User) SecurityContextHolder
                 .getContext().getAuthentication().getPrincipal();
         return user.getUsername();
     }
