@@ -27,14 +27,12 @@
         <ui:include src="../blocks/header.xhtml"/>
     </ui:insert>
 
-    <h:panelGroup layout="block" styleClass="jumbotron">
-        <h:panelGroup layout="block" styleClass="container">
-            <h1>Animal Shelter</h1>
-        </h:panelGroup>
+    <h:panelGroup layout="block">
+        <h3>List of animals</h3>
     </h:panelGroup>
 
     <h:form id="form" prependId="false">
-        <p:dataTable var="element"
+        <p:dataTable style="width: 100%" var="element"
                      value="#{animalBean.model}"
                      paginator="true"
                      rows="4"
@@ -42,31 +40,34 @@
                       {PreviousPageLink} {CurrentPageReport} {NextPageLink} {LastPageLink}"
                      rowsPerPageTemplate="4,8,12">
 
-            <p:column headerText="Id" style="width: 40px">
+            <p:column headerText="Id" style="width: 3%">
                 <h:outputText value="#{element.id}"/>
             </p:column>
-            <p:column headerText="Photo">
+            <p:column headerText="Photo" style="width: 10%; text-align: center">
                 <!--cache to false-->
                 <p:graphicImage width="100" cache="false" value="#{photoOutputBean.photo}"
                                 alt="Image not avilable">
                     <f:param name="animal" value="#{element.id}"/>
                 </p:graphicImage>
             </p:column>
-            <p:column headerText="Name">
+            <p:column headerText="Name" style="width: 10%">
                 <h:outputText value="#{element.name}"/>
             </p:column>
-            <p:column headerText="Type">
+            <p:column headerText="Type" style="width: 10%; text-align: center">
                 <h:outputText value="#{element.type}"
                               converter="#{animalTypeConverter}"/>
             </p:column>
-            <p:column headerText="Gender">
+            <p:column headerText="Gender" style="width: 10%; text-align: center">
                 <h:outputText value="#{element.gender}"
                               converter="#{genderConverter}"/>
             </p:column>
-            <p:column headerText="Info">
+            <p:column headerText="Info" style="width: 37%">
                 <h:outputText value="#{element.info}"/>
             </p:column>
-            <p:column headerText="User" style="width:92px;text-align: center">
+            <p:column headerText="Owner name" style="width: 10%">
+                <h:outputText value="#{element.user.login}"/>
+            </p:column>
+            <p:column headerText="Owner info" style="width:8%; text-align: center">
                 <p:commandButton update=":form:userDetail"
                                  oncomplete="PF('userDialog').show()"
                                  icon="ui-icon-search"
